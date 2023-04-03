@@ -1,0 +1,1 @@
+from produtos.tests.tests_categorias import Categoria_test
