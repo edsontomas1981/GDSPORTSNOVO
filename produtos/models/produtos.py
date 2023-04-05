@@ -8,6 +8,7 @@ class Produtos(models.Model):
     categoria_fk = models.ForeignKey(Categoria, on_delete=models.CASCADE, blank=False, null=True)
     subcategoria_fk = models.ForeignKey(Subcategoria, on_delete=models.CASCADE, blank=False, null=True)
     descricao = models.CharField(max_length=30, null=True)
+    qtde = models.IntegerField(null=True)
     marca = models.CharField(max_length=30, null=True)
     preco = models.FloatField(null=True)
     cor = models.ForeignKey(Cores, on_delete=models.CASCADE, blank=False, null=True)

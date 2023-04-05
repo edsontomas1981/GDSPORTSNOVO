@@ -5,6 +5,7 @@ class Categoria:
     def save_or_update(self,dados):
         self.obj_categoria.categoria=dados['categoria']
         self.obj_categoria.save()
+        
 
     def create_categoria(self,dados):
         try:
@@ -12,6 +13,7 @@ class Categoria:
             return 200
         except:
             return 300
+
 
     def read_categoria(self,id):
         try:
@@ -22,7 +24,8 @@ class Categoria:
                 return 404
         except:
             return 300
-        
+
+
     def update_categoria(self,id,dados):
         try:
             if Mdl_categoria.objects.filter(id=id).exists():
@@ -33,6 +36,7 @@ class Categoria:
                 return 404
         except:
             return 300
+        
         
     def delete_categoria(self,id):
         try:
