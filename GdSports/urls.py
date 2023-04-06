@@ -20,9 +20,7 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    # path('' , include('principal.urls')),
     path('admin/', admin.site.urls),
-    # path('auth/', include('autenticacao.urls')),
     path('produtos/' , include('produtos.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

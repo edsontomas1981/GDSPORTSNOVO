@@ -77,18 +77,42 @@ class Produtos:
         except ObjectDoesNotExist:
             return 404
         except:
-            return 300   
-            
+            return 300 
+        
+
+    def update_produto(self,id,dados):
+        try:
+            if Mdl_produtos.objects.filter(id=id).exists:
+                self.obj_produto=Mdl_produtos.objects.filter(id=id).get()
+                self.save_or_update(dados)
+                return 200
+            else:
+                return 404
+        except ObjectDoesNotExist:
+            return 404
+        except:
+            return 300
+        
+    def delete_produto(self,id):
+        try:
+            if Mdl_produtos.objects.filter(id=id).exists:
+                self.obj_produto=Mdl_produtos.objects.filter(id=id).get()
+                self.obj_produto.delete()
+                return 200
+            else:
+                return 404
+        except ObjectDoesNotExist:
+            return 404
+        except:
+            return 300
          
     def add_produto(self,qtde):
         try:
-            if qtde<0:
-                return 400 #numero negativo
             if str(qtde).isnumeric():
                 self.obj_produto.qtde += qtde
                 return 200
             else:
-                return 401 #nao numerico            
+                return 401 # Valor Invalido
         except:
             return 300
         
@@ -96,12 +120,12 @@ class Produtos:
     def subtrai_produto(self,qtde):
         try:
             if str(qtde).isnumeric():
-                if qtde>0:
-                    self.obj_produto.qtde += qtde
+                if qtde<= self.obj_produto.qtde:
+                    self.obj_produto.qtde -= qtde
                     return 200
                 else:
-                    return 400 #numero negativo
+                    return  402 # qtde em estoque indisponivel
             else:
-                return 401 #nao numerico
+                return 401 # Valor Invalido
         except:
-            return 300    
+            return 300   

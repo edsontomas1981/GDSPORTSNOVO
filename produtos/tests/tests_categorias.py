@@ -7,6 +7,7 @@ class Categoria_test(TestCase):
         self.categoria=Categoria()
         self.subcategoria=Subcategoria()
 
+
     def test_categoria(self):
         dados = {'categoria':"Brasileirão"}
         dados_erro = {}

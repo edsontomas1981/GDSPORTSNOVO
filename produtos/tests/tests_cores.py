@@ -24,4 +24,3 @@ class Cores_test(TestCase):
         self.assertEqual(self.cor.delete_cor(2),404)
         self.assertEqual(self.cor.delete_cor(dados_errados),300)
         self.assertEqual(self.cor.delete_cor(1),200)
-        

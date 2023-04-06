@@ -22,6 +22,7 @@ class Categoria_test(TestCase):
         self.subcategoria.create_subcategoria(dados_sub)      
 
     def test_produtos(self):
+        # Gera dados
         dados_erro={}
         dados_produto={'categoria_fk':self.categoria.obj_categoria,
                        'subcategoria_fk':self.subcategoria.obj_subcategoria,
@@ -29,20 +30,24 @@ class Categoria_test(TestCase):
                        'cor':self.cor.obj_cor,'tamanho':self.tamanho.obj_tamanho
                        ,'obs':'Observação','qtde':10}
 
+    #Cria Produto
         self.assertEqual(self.produto.create_produto(dados_produto),200)
         self.assertEqual(self.produto.create_produto(dados_erro),300)
 
+    #Buscas diversas
+        #Busca por id
         self.assertEqual(self.produto.read_produto_id(1),200)
         self.assertEqual(self.produto.read_produto_id(2),404)
-
+        
+        #Busca por descrição
         self.assertEqual(self.produto.read_produto_descricao('Camisa'),200)
         self.assertEqual(len(self.produto.lista_produtos),1)
         self.assertEqual(self.produto.read_produto_descricao('Boné'),404)
         self.assertEqual(len(self.produto.lista_produtos),0)
 
+        #Busca por categoria
         self.assertEqual(self.produto.read_produto_categoria(self.categoria),200)
         self.assertEqual(len(self.produto.lista_produtos),1)
-
         self.categoria1=Categoria()
         dados_categoria = {'categoria':"Europa"}
         self.categoria1.create_categoria(dados_categoria)
@@ -50,21 +55,47 @@ class Categoria_test(TestCase):
         self.assertEqual(len(self.produto.lista_produtos),0)
         self.assertEqual(self.produto.read_produto_categoria(dados_erro),300)
         self.assertEqual(len(self.produto.lista_produtos),0)
-
+        #Busca por marca
         self.assertEqual(self.produto.read_produto_marca('Nike'),200)
         self.assertEqual(len(self.produto.lista_produtos),1)
         self.assertEqual(self.produto.read_produto_marca('Adidas'),404)
-        self.assertEqual(len(self.produto.lista_produtos),0)
+        self.assertEqual(len(self.produto.lista_produtos),0)        
 
-        self.assertEqual(self.produto.obj_produto.qtde,10)
+    #Atualizar produto        
+        dados_erro={}
+        dados_produto={'categoria_fk':self.categoria.obj_categoria,
+                       'subcategoria_fk':self.subcategoria.obj_subcategoria,
+                       'descricao':'Camisa 2024','marca':'Adidas','preco':130.00,
+                       'cor':self.cor.obj_cor,'tamanho':self.tamanho.obj_tamanho
+                       ,'obs':'Observação','qtde':45}
+        self.assertEqual(self.produto.update_produto(1,dados_produto),200)
+        self.assertEqual(self.produto.obj_produto.descricao,'Camisa 2024')
+        self.assertEqual(self.produto.obj_produto.marca,'Adidas')
+        self.assertEqual(self.produto.obj_produto.preco,130.00)
+        self.assertEqual(self.produto.update_produto(1,dados_erro),300)
+    
+        self.assertEqual(self.produto.obj_produto.qtde,45)
         self.assertEqual(self.produto.add_produto(1),200)
-        self.assertEqual(self.produto.obj_produto.qtde,11)
-        self.assertEqual(self.produto.add_produto(-1),400)
-        self.assertEqual(self.produto.add_produto('a'),401)
-        self.assertEqual(self.produto.add_produto(1.06),200)
-        self.assertEqual(self.produto.obj_produto.qtde,12)
+        self.assertEqual(self.produto.obj_produto.qtde,46)
+        self.assertEqual(self.produto.add_produto(-1),401)#deve ser um numero inteiro
+        self.assertEqual(self.produto.add_produto('a'),401)#deve ser um numero inteiro
+        self.assertEqual(self.produto.add_produto(1.06),401)#deve ser um numero inteiro
 
-        # self.assertEqual(self.produto.subtrai_produto(2),9)
+        self.assertEqual(self.produto.subtrai_produto(2),200)
+        self.assertEqual(self.produto.obj_produto.qtde,44)
+        self.assertEqual(self.produto.subtrai_produto('a'),401)#deve ser um numero inteiro
+        self.assertEqual(self.produto.subtrai_produto(1.06),401) #deve ser um numero inteiro
+        self.assertEqual(self.produto.obj_produto.qtde,44)
+        self.assertEqual(self.produto.subtrai_produto(70),402)#Retirada maior do que estoque
+        self.assertEqual(self.produto.obj_produto.qtde,44)
+
+        self.assertEqual(self.produto.delete_produto(dados_erro),300)
+        self.assertEqual(self.produto.read_produto_id(1),200)
+        self.assertEqual(self.produto.delete_produto(1),200)
+        self.assertEqual(self.produto.read_produto_id(1),404)
+
+
+
 
 
 
