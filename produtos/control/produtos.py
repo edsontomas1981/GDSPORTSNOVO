@@ -93,10 +93,10 @@ class Produtos:
         except:
             return 300
         
-    def delete_produto(self,id):
+    def delete_produto(self,idProduto):
         try:
-            if Mdl_produtos.objects.filter(id=id).exists:
-                self.obj_produto=Mdl_produtos.objects.filter(id=id).get()
+            if Mdl_produtos.objects.filter(id=idProduto).exists:
+                self.obj_produto=Mdl_produtos.objects.filter(id=idProduto).get()
                 self.obj_produto.delete()
                 return 200
             else:
@@ -106,7 +106,7 @@ class Produtos:
         except:
             return 300
          
-    def add_produto(self,qtde):
+    def add_produto(self, qtde):
         try:
             if str(qtde).isnumeric():
                 self.obj_produto.qtde += qtde

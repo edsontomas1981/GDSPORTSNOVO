@@ -1,0 +1,1 @@
+from lista_desejos.tests.test_lista_desejo import Lista_desejos_test

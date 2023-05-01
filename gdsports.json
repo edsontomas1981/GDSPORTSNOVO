@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gdsports",
+  "private_key_id": "53bfcb2e397f3cb45724ceba44d029cfd87a5dfd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCvZr8lmDO+voWR\nKCW4N2VHCQ+KSp41KAWfd/nRf5siEa0sfQPXOmcL61+W8LC0lN18pdolVaNBWoqs\nDudbIt4pSaA2plEjuiy0sTshlvk7yMKe4CPpVKuws/7THWCQjjQSzpsmNvCglzK9\nLurWNJsU8H22hrJqSQY9/SJZW+6+O47mMtu4Cg3mOsm6T0RaIa9gfHz75cdQvwWm\nYelzBPKMaGl3tYTRG2uhCuhl52NtUDHj55IDJ6Gp3SngKRbrYEPmS91+SUxZOaRF\nrwhwTT4YDxY8vmqo85VcZ5g1Gk268E0Am0fgchGNoNTHv+1TZdPNAPwrhabaTAfg\n+h0FWpinAgMBAAECggEAB59PbzLODNv6sfQsr3S40f1yz2+usGCs3eE42gHRnAlo\nnSZRpGjFUZ9I6CZNh4twlJoggL7X+V8V56Q+KZe6T9EDRVy06fiNOMz65NrKue5f\nhsf2x40GaQdpa4M7Twze9nJEC8UXb+MiMVZ4nhZrJt3MmMIBvtytiMQXWgrEtT+O\n6G1+Sv9gVgLaBtOzYJE+/5ibRY/3ht9t9E74i9U3Plj/vsxDCccuBKP6DUv/bz13\nJH5Owb0qYnJekTCUJ8kysX5JuMfmlEEMgmtxDAs6Cgz3VTxoBlc8QetE1MadeZuN\nO+H4+GE3UIVk36hRiUn/bKfjykcm3DZMnYriIEJ3AQKBgQDbgpysTrRYSAMgk4Le\nVIPprIauO7H1Vb3ahjVPCJACT6+Lv5/YBqbi2AM5RS6ipwUJYwT/TgDFSPHoG64M\nWAeq7bIlF9NVZ2V/X+ZgAaB+/lq57jQaK6/gXCDNcOCMOTL6dzJMaVUDduJlrQjQ\nAqdJKqWuM9+BxA7sDSKtpt1o3QKBgQDMjw5j3Jm5csjqcFndAlMGWKt7f+lLnOVo\noeOJn98Wv5Ok7ag04IxIcR7QF4x2aob9Lmro/t3cadcH62OMszl0DhXV95LJRI8K\nsrtnClXoVXq1RwNen9kL6Ja5gQoXx2ZqUWQ7QPwA/SbwFqcv3hbtRad9O7L8g8wi\nrFYG0SHtUwKBgQDODj2kQf1pIbBN1Cr1KcDqidmjlMXo1yPxDircld0ZTlQriyYx\nU401RDFCgX7VkJNZzGnUfxSaHW93wwQO8lPAUID58POhJ/5PI2bOmLhgfcQM5V5j\ncr8WjWT9dQhUmR0RoPLGZ9o19lNvvo6XNOZz+GSusmMNHU4kp+/1sr4EwQKBgBC0\nfhBZq5Qhc5bxpeUOk4kpJJfpUjwCjBmHXvWWQLmy23PUlK/8xngEBOgphCcHfA6h\nA8oTRjsBybWz22VaHY8Et3PJzArztlrBTdyUU3+tu1+idPv9QdRfIi/0Acb/WbXE\n/9J29B2AjvV8ZBrcoDKwRYVMoslMWhday4uy+HpRAoGAG6roePCno7GCSt3akemy\ntkmBV4deDesQJaeyyJQAYcKFOh7uJwreIxakoX+k9SxPHe6TZJU6kUcuT+r67H9G\n4+8bofp4eMqqSOnh0/qXi9243EnJw981mqYZ2s0JRQijOSmAKhXqRrIpDac5zgaQ\nVUjMqXdKYJmktVe1Y4Mxbso=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-30i9u@gdsports.iam.gserviceaccount.com",
+  "client_id": "112637236244997824677",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-30i9u%40gdsports.iam.gserviceaccount.com"
+}

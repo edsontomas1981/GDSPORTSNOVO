@@ -18,10 +18,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
+from loja.views.home_loja import home_loja
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', include('loja.urls')),   
     path('produtos/' , include('produtos.urls')),
+    path('autenticacao/' , include('autenticacao.urls')),
+    path('carrinho/' , include('carrinho.urls')),
+    path('lista_desejos/' , include('lista_desejos.urls')),
+    path('lista_desejos/' , include('lista_desejos.urls')),
+
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

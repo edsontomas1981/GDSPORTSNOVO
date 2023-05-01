@@ -9,12 +9,12 @@ class Categoria_test(TestCase):
     def setUp(self):
         self.categoria=Categoria()
         self.subcategoria=Subcategoria()
-        self.produto=Produtos()
-        self.cor= Cores()
-        self.tamanho= Tamanhos()
-        dados_categoria = {'categoria':"Brasileirão"}
-        dados_cores={'cor':'Preta'}
-        dados_tamanho={'tamanho':'GG'}
+        self.produto = Produtos()
+        self.cor = Cores()
+        self.tamanho = Tamanhos()
+        dados_categoria = {'categoria' : "Brasileirão"}
+        dados_cores = {'cor' : 'Preta'}
+        dados_tamanho = {'tamanho' : 'GG'}
         self.categoria.create_categoria(dados_categoria)
         self.cor.create_cor(dados_cores)
         self.tamanho.create_tamanho(dados_tamanho)
@@ -24,7 +24,7 @@ class Categoria_test(TestCase):
     def test_produtos(self):
         # Gera dados
         dados_erro={}
-        dados_produto={'categoria_fk':self.categoria.obj_categoria,
+        dados_produto={'categoria_fk' :self.categoria.obj_categoria,
                        'subcategoria_fk':self.subcategoria.obj_subcategoria,
                        'descricao':'Camisa 2023','marca':'Nike','preco':125.00,
                        'cor':self.cor.obj_cor,'tamanho':self.tamanho.obj_tamanho
@@ -89,10 +89,10 @@ class Categoria_test(TestCase):
         self.assertEqual(self.produto.subtrai_produto(70),402)#Retirada maior do que estoque
         self.assertEqual(self.produto.obj_produto.qtde,44)
 
-        self.assertEqual(self.produto.delete_produto(dados_erro),300)
-        self.assertEqual(self.produto.read_produto_id(1),200)
-        self.assertEqual(self.produto.delete_produto(1),200)
-        self.assertEqual(self.produto.read_produto_id(1),404)
+        self.assertEqual(self.produto.delete_produto(dados_erro), 300)
+        self.assertEqual(self.produto.read_produto_id(1), 200)
+        self.assertEqual(self.produto.delete_produto(1), 200)
+        self.assertEqual(self.produto.read_produto_id(1), 404)
 
 
 

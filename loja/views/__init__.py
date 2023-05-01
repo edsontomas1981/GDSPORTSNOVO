@@ -1,0 +1,1 @@
+from loja.views.home_loja import home_loja

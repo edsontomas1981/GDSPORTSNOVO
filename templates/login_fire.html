@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login com Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth.js"></script>
+</head>
+<body>
+    <h1>Login com Firebase</h1>
+    <button onclick="login()">Entrar com Google</button>
+
+    <script>
+        // Inicializa o Firebase com a sua configuração
+        const firebaseConfig = {
+            // insira aqui as informações da sua chave de serviço do Firebase
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Função para abrir a tela de login do Firebase
+        function login() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                console.log(result);
+                // redireciona o usuário para a página de perfil ou home
+                window.location.href = "/perfil/";
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+    </script>
+</body>
+</html>
