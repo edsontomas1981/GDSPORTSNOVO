@@ -1,0 +1,25 @@
+input.invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+  }
+
+  @media (max-width: 767px) {
+    .hide-on-mobile {
+      display: none;
+    }
+
+    .show-on-mobile {
+      display: inline;
+    }
+
+
+    #aside {
+      display: none;
+    }
+  }
+
+@media (min-width: 767px) {
+  .show-on-mobile {
+    display: none;
+  }
+}

@@ -31,6 +31,8 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" href=""/>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/meusCss/valida.css' %}" />
+
 
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
@@ -58,7 +60,7 @@
 							<li><a href="{% url 'views_logout' %}"><i class="fa fa-sign-out"></i> Sair </a></li>
 							<li><a href="#"><i class="fa fa-user"></i> {{ user.username }}</a></li>
 						{% else %}
-							<li><a href="#"><i class="fa fa-user-o"></i> Criar conta </a></li>
+							<li><a href="#" data-toggle="modal" data-target="#modalCadastro" ><i class="fa fa-user-o"></i> Criar conta </a></li>
 							<li><a href="#" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user"></i> Entrar</a></li>
 						{% endif %}
 					</ul>
@@ -211,7 +213,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Inscreva-se em nossa <strong>NEWSLETTER</strong></p>
+							<p>Inscreva-se e receba nossas <strong>OFERTAS</strong></p>
 							<form>
 								<input class="input" type="email" placeholder="Email">
 								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Inscrever-se</button>
@@ -241,7 +243,7 @@
 				<div class="container">
 					<!-- row -->
 					<div class="row">
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Sobre nós</h3>
 								<p>Oferecemos roupas e acessórios para diversos esportes, 
@@ -255,7 +257,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Categorias</h3>
 								<ul class="footer-links">
@@ -270,7 +272,7 @@
 
 						<div class="clearfix visible-xs"></div>
 
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Serviços</h3>
 								<ul class="footer-links">
@@ -286,6 +288,88 @@
 					<!-- /row -->
 				</div>
 				<!-- /container -->
+				<!-- Modal de login -->
+				<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="modalLoginLabel">Entrar</h4>
+						</div>
+						<div class="modal-body">
+						<!-- Formulário de login -->
+						<form id="formLogin" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+							<label for="login">Login</label>
+							<input type="text" class="form-control" id="login">
+							</div>
+							<div class="form-group">
+							<label for="senha">Senha</label>
+							<input type="password" class="form-control" id="senha">
+							</div>
+							<a class="btn btn-primary" id="entrar" >Entrar</a >
+						</form>
+						<!-- Links para login via redes sociais -->
+						<div class="social-login">
+							<hr>
+							<h5>Entrar com:</h5>
+							<a href="#" class="btn btn-default"><i class="fa fa-facebook"></i> Facebook</a>
+							<a href="#" class="btn btn-default"><i class="fa fa-twitter"></i> Twitter</a>
+							<a href="#" class="btn btn-default"><i class="fa fa-google"></i> Google</a>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+
+				<!-- Modal de Cadastro -->
+				<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalLoginLabel">Faça o seu cadastro</h4>
+						</div>
+						<div class="modal-body">
+						<!-- Formulário de login -->
+						<form id="formCadastro" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<label for="login">Email</label>
+								<input type="email" class="form-control" id="user" required data-error="Por favor, preencha insira um email válido">
+							</div>
+							<div class="form-group">
+								<label for="nome">Nome</label>
+								<input type="text" class="form-control" id="nome" required data-error="Por favor, preencha seu nome">
+							</div>								
+							<!-- <div class="form-group">
+								<label for="fone">Telefone</label>
+								<input type="text" class="form-control" id="fone" onkeypress="mascaraTelefone(this)" required>
+							</div> -->
+							<div class="form-group">
+								<label for="senha">Senha</label>
+								<input type="password" class="form-control" id="cadastroSenha" required data-error="Por favor, preencha o campo senha">
+							</div>
+							<div class="form-group">
+								<label for="senha"> Confirmação de senha</label>
+								<input type="password" class="form-control" id="confirmacaoSenha" required data-error="Por favor, preencha o campo senha">
+							</div>							
+							<a class="btn btn-primary" id="cadastrar" >Cadastrar</a >
+						</form>
+						<!-- Links para login via redes sociais -->
+						<div class="social-login">
+							<hr>
+							<h5>Entrar com:</h5>
+							<a href="#" class="btn btn-default"><i class="fa fa-facebook"></i> Facebook</a>
+							<a href="#" class="btn btn-default"><i class="fa fa-twitter"></i> Twitter</a>
+							<a href="#" class="btn btn-default"><i class="fa fa-google"></i> Google</a>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>				
+
 			</div>
 			<!-- /top footer -->
 
@@ -328,5 +412,12 @@
 		<script src="{% static 'js/nouislider.min.js'%}"></script>
 		<script src="{% static 'js/jquery.zoom.min.js'%}"></script>
 		<script src="{% static 'js/main.js'%}"></script>
+		<script src="{% static 'js/meuJs/autenticacao/login.js' %}"></script>
+		<script src="{% static 'js/meuJs/autenticacao/cadastrarUsuario.js' %}"></script>
+		<script src="{% static 'js/meuJs/conexao/conexao.js' %}"></script>
+		<script src="{% static 'js/meuJs/utils/validaEmail.js' %}"></script>
+		<script src="{% static 'js/meuJs/utils/validaSenha.js' %}"></script>
+		<script src="{% static 'js/meuJs/utils/validaFormularios.js' %}"></script>
+		<script src="{% static 'js/meuJs/utils/mascaraTelefone.js' %}"></script>
 	</body>
 </html>
