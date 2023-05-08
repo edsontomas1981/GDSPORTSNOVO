@@ -15,7 +15,22 @@ teste.addEventListener('click',async (e)=>{
     container.innerHTML = html;
     e.preventDefault();
 })
+window.addEventListener('load', async (e)=>{
 
+    let url = '/home/categoria/'
+    let dados = {'idMenu':3}
+    let conexao = new Conexao(url,dados)
+    let html=""
+    let result= await conexao.sendPostRequest()
+    console.log(result)
+    result.status.forEach(element => {
+        html+=geraHtml(element)
+    });
+    // Adicionando o HTML gerado na div container
+    container.innerHTML = html;
+    e.preventDefault();
+
+})
 const geraHtml = (dados)=>{
         // Gerando o HTML a partir do resultado da requisição
         return `

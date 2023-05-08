@@ -36,7 +36,7 @@
 
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
-
+		
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -182,19 +182,15 @@
 		<nav id="navigation">
 			<!-- container -->
 			<div class="container">
-				<!-- responsive-nav -->
-				<div id="responsive-nav">
-					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Brasileirão</a></li>
-						<li><a href="#">Europa</a></li>
-						<li><a href="#">Nba</a></li>
-						<li><a href="#">Outras Ligas</a></li>
-					</ul>
-					<!-- /NAV -->
-				</div>
-				<!-- /responsive-nav -->
+					<!-- responsive-nav -->
+					<div id="responsive-nav">
+						<!-- NAV -->
+						<ul class="main-nav nav navbar-nav" id="menu">
+							<li class="active"><a href="#" class="teste" id="0" onclick="teste(this)">Home</a></li>
+						</ul>
+						<!-- /NAV -->
+					</div>
+					<!-- /responsive-nav -->
 			</div>
 			<!-- /container -->
 		</nav>
@@ -204,7 +200,6 @@
 		{% block 'conteudo' %}
 		{% endblock %}
 		{% include 'login.html' %}
-
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
 			<!-- container -->
@@ -419,5 +414,6 @@
 		<script src="{% static 'js/meuJs/utils/validaSenha.js' %}"></script>
 		<script src="{% static 'js/meuJs/utils/validaFormularios.js' %}"></script>
 		<script src="{% static 'js/meuJs/utils/mascaraTelefone.js' %}"></script>
+		<script src="{% static 'js/meuJs/utils/loadBase.js' %}"></script>
 	</body>
 </html>
