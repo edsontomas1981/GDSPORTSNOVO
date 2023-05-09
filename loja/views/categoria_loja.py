@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 from produtos.models.produtos import Produtos
-from produtos.models.imagens import Imagens
 
 def categoria_loja (request):
     if request.method == 'GET':      
