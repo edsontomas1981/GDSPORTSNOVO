@@ -7,11 +7,8 @@ class Menus(models.Model):
         verbose_name = 'Menu'
         verbose_name_plural = 'Menus'
 
+    def __str__(self):
+        return self.descricao
+
     def to_dict(self):
-        return{'id':self.id,
-               'logo':self.logo.url if self.logo else None,
-               'whatsapp':self.whatsapp,
-               'instagram':self.instagram,
-               'fone':self.instagram,
-               'cnpj_cpf':self.cnpj_cpf,
-                }
+        return{'id':self.id,'descricao':self.descricao,}

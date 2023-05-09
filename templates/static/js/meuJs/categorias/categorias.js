@@ -1,24 +1,11 @@
-let teste = document.getElementById('teste')
 let imagem = document.getElementById('imagem')
 let container = document.getElementById('container')
 
-teste.addEventListener('click',async (e)=>{
-    let url = '/home/categoria/'
-    let dados = {'login':email.value,'senha':senha.value}
-    let conexao = new Conexao(url,dados)
-    let html=""
-    let result= await conexao.sendPostRequest()
-    result.status.forEach(element => {
-        html+=geraHtml(element)
-    });
-    // Adicionando o HTML gerado na div container
-    container.innerHTML = html;
-    e.preventDefault();
-})
 window.addEventListener('load', async (e)=>{
-
     let url = '/home/categoria/'
-    let dados = {'idMenu':3}
+    const urlParams = new URLSearchParams(window.location.search);
+    const idMenu = urlParams.get('idMenu');
+    let dados={'idMenu':idMenu}
     let conexao = new Conexao(url,dados)
     let html=""
     let result= await conexao.sendPostRequest()
@@ -29,8 +16,8 @@ window.addEventListener('load', async (e)=>{
     // Adicionando o HTML gerado na div container
     container.innerHTML = html;
     e.preventDefault();
-
 })
+
 const geraHtml = (dados)=>{
         // Gerando o HTML a partir do resultado da requisição
         return `
@@ -64,7 +51,6 @@ const geraHtml = (dados)=>{
         </div>
         `;
 }
-
 
 function toggleAside() {
     var aside = document.getElementById("aside");
