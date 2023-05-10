@@ -5,7 +5,7 @@ window.addEventListener('load',()=>{
 
 })
 
-const carregaMenu = async (e)=>{
+const carregaMenu = async ()=>{
     let url = '/home/menus/'
     let dados = {'login':email.value,'senha':senha.value}
     let conexao = new Conexao(url,dados)
@@ -17,7 +17,6 @@ const carregaMenu = async (e)=>{
     });
     // Adicionando o HTML gerado na div container
     menu.innerHTML = html;
-    e.preventDefault();
 }
 
 const geraMenu = (dados)=>{
@@ -31,5 +30,3 @@ const carregaPageMenu = (idMenu)=>{
     const url = `/home/categoria/?idMenu=${idMenu.id}`;
     window.location.href = url;
 }
-
-// ${dados.capa}

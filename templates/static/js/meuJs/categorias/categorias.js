@@ -1,7 +1,8 @@
 let imagem = document.getElementById('imagem')
 let container = document.getElementById('container')
+var loading = document.getElementById("loading");
 
-window.addEventListener('load', async (e)=>{
+window.addEventListener('load', async ()=>{
     let url = '/home/categoria/'
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
@@ -15,7 +16,6 @@ window.addEventListener('load', async (e)=>{
     });
     // Adicionando o HTML gerado na div container
     container.innerHTML = html;
-    e.preventDefault();
 })
 
 const geraHtml = (dados)=>{
@@ -60,3 +60,11 @@ function toggleAside() {
       aside.style.display = "none";
     }
   }
+
+container.addEventListener("readystatechange", function() {
+    if (container.readyState === "complete") {
+        loading.style.display = "none";
+    } else {
+        loading.style.display = "block";
+    }
+});

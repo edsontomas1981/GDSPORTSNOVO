@@ -9,6 +9,10 @@ def categoria_loja (request):
         return render(request,'categoria.html') 
     elif request.method == "POST" :
         data = json.loads(request.body.decode('utf-8'))
-        produtos = [produto for produto in Produtos.objects.all() if produto.categoria_fk.menu.id == int(data['idMenu'])]
-        produtos_dict = [produto.to_dict() for produto in produtos]
+        if data['idMenu']:
+            produtos = [produto for produto in Produtos.objects.all() if produto.categoria_fk.menu.id == int(data['idMenu'])]
+            produtos_dict = [produto.to_dict() for produto in produtos]
+        else:
+            produtos = [produto for produto in Produtos.objects.all()]
+            produtos_dict = [produto.to_dict() for produto in produtos]
         return JsonResponse({'status': produtos_dict})
