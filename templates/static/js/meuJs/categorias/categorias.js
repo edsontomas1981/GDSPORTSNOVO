@@ -21,7 +21,7 @@ window.addEventListener('load', async ()=>{
 const geraHtml = (dados)=>{
         // Gerando o HTML a partir do resultado da requisição
         return `
-        <div class="col-md-4 col-xs-6">
+        <div class="col-md-4 col-xs-6 produtos" id="${dados.id}" onclick="carregaProduto(this)">
             <div class="product">
                 <div class="product-img">
                     <img src="${dados.capa}" alt="">
@@ -41,7 +41,7 @@ const geraHtml = (dados)=>{
                     </div>
                     <div class="product-btns">
                         <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Curtir</span></button>
-                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Ver mais.</span></button>
+                        <button class="quick-view"><a href="/home/produto/"><i class="fa fa-eye"></i></a><span class="tooltipp">Ver mais.</span></button>
                     </div>
                 </div>
                 <div class="add-to-cart">
@@ -68,3 +68,8 @@ container.addEventListener("readystatechange", function() {
         loading.style.display = "block";
     }
 });
+
+const carregaProduto=(e)=>{
+    let url = `/home/produto/?idProduto=${e.id}`;
+    window.location.href = url;
+}

@@ -9,7 +9,7 @@ const carregaMenu = async ()=>{
     let url = '/home/menus/'
     let dados = {'login':email.value,'senha':senha.value}
     let conexao = new Conexao(url,dados)
-    let html=`<li class="active"><a href="/home/" class="teste" id="0" onclick="teste(this)">Home</a></li>`
+    let html=`<li class="active"><a href="/home/" class="teste" id="0">Home</a></li>`
     let result= await conexao.sendPostRequest()
     console.log(result) 
     result.status.forEach(element => {

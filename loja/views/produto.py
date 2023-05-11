@@ -8,4 +8,5 @@ def produto_loja (request):
         return render(request, 'produtos.html')
     elif request.method == "POST" :
         # data = json.loads(request.body.decode('utf-8'))
+        
         return render(request, 'produtos.html')
