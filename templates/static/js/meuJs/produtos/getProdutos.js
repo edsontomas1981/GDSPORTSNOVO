@@ -1,4 +1,4 @@
-let containerProduto = document.getElementById('containerProduto')
+
 
 window.addEventListener('DOMContentLoaded', async ()=>{
     let url = '/produtos/read_produtos/'
@@ -8,26 +8,42 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     let conexao = new Conexao(url,dados)
     let htmlProduto=""
     let result= await conexao.sendPostRequest()
-    console.log(result)
-    htmlProduto=geraHtmlProduto(result)
-    console.log(containerProduto)
-    containerProduto.innerHTML = htmlProduto;
+    carregaDadosProduto(result);
 })
 
-const geraHtmlProduto=(produto)=>{
-   return `
-    `
+const carregaDadosProduto=(result)=>{
+    let capa = document.getElementById('imgProduto')
+    let nomeProduto = document.getElementById('nomeProduto')
+    let precoProduto = document.getElementById('precoProduto')
+    let estoque = document.getElementById('estoqueProduto')
+    let descProduto = document.getElementById('descProduto')
+    // let carrossel = document.getElementById('carousel')
+    console.log(result)
+    capa.setAttribute('src', result.produto.capa);
+    nomeProduto.textContent=result.produto.descricao
+    precoProduto.textContent='R$ '+ result.produto.preco
+    if (result.produto.qtde>0){
+        estoque.textContent='Em estoque'
+    }else{
+        estoque.textContent='Esgotado'
+    }
+    descProduto.textContent=result.produto.descricao
+    let htmCarrossel =""
+    result.imagens.forEach(element => {
+        htmCarrossel+=carrosselHtml(element)    
+    });
+    // carrossel.innerHTML=htmCarrossel
 }
 
-const carrossel = ()=>{
-    `
-    <!-- product -->
-    <div class="product">
-        <div class="product-img">
-            <img src="{% static 'img/camisetasPromo/outrasLigas/boca.jpeg' %}" alt="">
-        </div>
-    </div>
-    <!-- /product -->
-    `
-
+const carrosselHtml = (imagens)=>{
+    return `<div class="carousel-item active col-md-6">
+                <img src="${imagens.imagem_url}" class="d-block w-100" alt="Imagem 1" style="width: 100%; padding:1px;">
+            </div>
+            <div class="carousel-item active col-md-6">
+                <img src="${imagens.imagem_url}" class="d-block w-100" alt="Imagem 1" style="width: 100%; padding:1px;">
+            </div>
+            <div class="carousel-item active col-md-6">
+                <img src="${imagens.imagem_url}" class="d-block w-100" alt="Imagem 1" style="width: 100%; padding:1px;">
+            </div>            
+            `
 }
