@@ -3,7 +3,10 @@
 {% load static %}
 
 {% block 'css' %}
-<link type="text/css" rel="stylesheet" href="{% static 'css/meusCss/carrossel.css' %}" />
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 {% endblock %}
 
 {% block 'conteudo'%}
@@ -14,70 +17,13 @@
     <div class="containerProduto container">
         <!-- row -->
     <div class="row">
-        <div class="col-md-2  col-md-pull-5">
-            <div id="product-imgs" class="slick-initialized slick-slider slick-vertical"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: block;">Previous</button>
-                <div class="slick-list draggable" style="height: 465px; padding: 0px;">
-                    <div class="slick-track" style="opacity: 1; height: 1860px; transform: translate3d(0px, -775px, 0px);">
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/media/imagens/cor1.jpg" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/media/imagens/cor1.jpg" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product06.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product08.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product01.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-active" data-slick-index="1" aria-hidden="false" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product03.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-current slick-active slick-center" data-slick-index="2" aria-hidden="false" tabindex="0" style="width: 155px;">
-                            <img src="/img/product06.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-active" data-slick-index="3" aria-hidden="false" tabindex="0" style="width: 155px;">
-                            <img src="/img/product08.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product01.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product03.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product06.png" alt="">
-                        </div>
-                        <div class="product-preview slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 155px;">
-                            <img src="/img/product08.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;">Next</button></div>
-        </div>
         <!-- Imagem principal -->
+
         <div class="col-md-4 mx-auto">
-            <img id="imgProduto"  alt="" style="width: 370px;">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="products-tabs">
-                            <!-- tab -->
-                            <div id="tab1" class="tab-pane active" style="max-width: 150px;">
-                                <div class="products-slick" data-nav="#slick-nav-1" id="carrossel">
-                                </div>
-                                <div class="row">
-                                <div id="slick-nav-1" class="products-slick-nav"></div>
-                                </div>
-                            </div>
-                            <!-- /tab -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <img id="imgProduto" class="imagem"  alt="" style="width: 370px;">
+        </div>
+        <div class="col-md-2">
+            {% include 'carrosselProdutos.html' %}
         </div>
         <!-- /Imagem principal -->
         <!-- Product details -->

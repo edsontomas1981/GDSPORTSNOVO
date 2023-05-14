@@ -1,11 +1,9 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import JsonResponse
 from produtos.models import Produtos
 from django.shortcuts import get_object_or_404
 import json
 
-# @login_required(login_url='/auth/entrar/')
 def read_produtos (request):
     if request.method == 'GET':
         return render(request, 'home.html')
