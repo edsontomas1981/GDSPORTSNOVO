@@ -19,12 +19,10 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         height   : '37rem',
         width: true,
         perPage: 4,
-        // Adiciona o componente Thumbnail
         thumbnails: true,
-        // Define o tamanho das miniaturas
         fixedWidth: 120,
         fixedHeight: 80,
-        gap: 10,
+        gap: 1,
         arrowPosition: 'left',
         autoScroll: {
             speed: 1,

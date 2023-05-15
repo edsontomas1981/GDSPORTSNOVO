@@ -7,7 +7,7 @@ from produtos.models.marca import Marcas
 
 class Produtos(models.Model):
     categoria_fk = models.ForeignKey(Categoria, on_delete=models.CASCADE, blank=False, null=True)
-    subcategoria_fk = models.ForeignKey(Subcategoria, on_delete=models.CASCADE, blank=False, null=True)
+    subcategoria_fk = models.ManyToManyField(Subcategoria,blank=True)
     descricao = models.CharField(max_length=30, null=True)
     qtde = models.IntegerField(null=True)
     marca = models.ForeignKey(Marcas, on_delete=models.CASCADE, blank=False, null=True)
@@ -25,10 +25,11 @@ class Produtos(models.Model):
         return self.descricao
 
     def to_dict(self):
+        subcategorias = [subcategoria.to_dict() for subcategoria in self.subcategoria_fk.all()]
         return {
             "id": self.id,
             "categoria_fk": self.categoria_fk.to_dict() if self.categoria_fk else None,
-            "subcategoria_fk": self.subcategoria_fk.to_dict() if self.subcategoria_fk else None,
+            "subcategorias": subcategorias if subcategorias else None, 
             "descricao": self.descricao,
             "qtde": self.qtde,
             "marca": self.marca.to_dict() if self.marca else None,

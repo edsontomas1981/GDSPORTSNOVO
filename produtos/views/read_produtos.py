@@ -14,7 +14,7 @@ def read_produtos (request):
             if produto_id is None:
                 raise ValueError('Campo "produto_id" não encontrado no corpo da requisição')
             produto = get_object_or_404(Produtos.objects.prefetch_related('imagens_set'), id=produto_id)
-            imagens_data = [{'nome': imagem.nome, 'imagem_url': imagem.imagem.url} for imagem in produto.imagens_set.all()]
+            imagens_data = [{'imagem_url': imagem.imagem.url} for imagem in produto.imagens_set.all()]
             data = {'produto': produto.to_dict(), 'imagens': imagens_data}
             return JsonResponse(data)
         except (json.JSONDecodeError, ValueError) as e:

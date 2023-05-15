@@ -3,7 +3,6 @@ from produtos.models.produtos import Produtos
 
 class Imagens(models.Model):
     produto = models.ForeignKey(Produtos, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=255)
     imagem = models.ImageField(upload_to='imagens/')
 
     class Meta:

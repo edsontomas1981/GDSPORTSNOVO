@@ -1,6 +1,7 @@
 let imagem = document.getElementById('imagem')
 let container = document.getElementById('container')
 var loading = document.getElementById("loading");
+let filtroCategorias = document.getElementById("filtroCategorias")
 
 window.addEventListener('load', async ()=>{
     let url = '/home/categoria/'
@@ -10,13 +11,29 @@ window.addEventListener('load', async ()=>{
     let conexao = new Conexao(url,dados)
     let html=""
     let result= await conexao.sendPostRequest()
-    console.log(result)
     result.status.forEach(element => {
         html+=geraHtml(element)
     });
     // Adicionando o HTML gerado na div container
     container.innerHTML = html;
+    carregaFiltroSubcategorias(result.subcategorias);
 })
+
+const carregaFiltroSubcategorias=(subcategorias)=>{
+    html=''
+    console.log(subcategorias)
+    subcategorias.forEach(element => {
+    html+=`<div class="input-checkbox">
+                <input type="checkbox" id="${element.id}">
+                    <label for="${element.id}">
+                    <span></span>
+                    ${element.descricao}
+                    <small>(${element.total_registros})</small>
+                </label>    
+            </div>`
+    });
+    filtroCategorias.innerHTML = html;
+}
 
 const geraHtml = (dados)=>{
         // Gerando o HTML a partir do resultado da requisição

@@ -1,0 +1,1 @@
+from loja.controller.subcategorias import subcategorias_por_menu
