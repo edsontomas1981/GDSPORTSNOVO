@@ -4,9 +4,8 @@
 
 {% block 'conteudo'%}
 
-
 <!-- SECTION -->
-<div class="section">
+<div class="section" >
     <!-- container -->
     <div class="container">
         <!-- row -->
@@ -18,9 +17,8 @@
                 <div id="aside" class="col-md-3 hide-on-mobile">
                     <!-- aside Widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Categorias</h3>
+                        <h3 class="aside-title" id="divCategorias">Categorias</h3>
                         <div class="checkbox-filter" id="filtroCategorias">
-
                         </div>
                     </div>
                     <!-- /aside Widget -->
@@ -47,59 +45,27 @@
 
                     <!-- aside Widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Marcas</h3>
-                        <div class="checkbox-filter">
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="brand-1">
-                                <label for="brand-1">
-                                    <span></span>
-                                    Adidas
-                                    <small>(-)</small>
-                                </label>
-                            </div>
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="brand-2">
-                                <label for="brand-2">
-                                    <span></span>
-                                    Nike
-                                    <small>(-)</small>
-                                </label>
-                            </div>
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="brand-3">
-                                <label for="brand-3">
-                                    <span></span>
-                                    Under Armor
-                                    <small>(-)</small>
-                                </label>
-                            </div>
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="brand-4">
-                                <label for="brand-4">
-                                    <span></span>
-                                    Puma
-                                    <small>(-)</small>
-                                </label>
-                            </div>
-                            <div class="input-checkbox">
-                                <input type="checkbox" id="brand-5">
-                                <label for="brand-5">
-                                    <span></span>
-                                    Outras
-                                    <small>(-)</small>
-                                </label>
-                            </div>
+                        <h3 class="aside-title" id="divMarcas">Marcas</h3>
+                        <div class="checkbox-filter" id="filtroMarcas">
                         </div>
                     </div>
                     <!-- /aside Widget -->
+                    <a class="btn btn-dark" id="btnFiltrar">Filtrar</a>
                 </div>
+                <div id="paginationControls"></div>                
+
                 <!-- /ASIDE -->
                 <!-- CONTEUDO -->
                 <div class="col-md-9" id="container">
                     <div id="loading" style="display: none;">
                         <img src="{% static 'img/loading.gif' %}" alt="Loading...">
-                    </div>                    
+                    </div>
                 </div>
+
+
+                <div id="loading-overlay">
+                    <div id="loading-spinner"></div>
+                  </div>
                 <!-- /CONTEUDO -->
         </div>
         <!-- /row -->
@@ -112,4 +78,6 @@
 {% endblock %} 
 {% block 'js' %} 
     <script src="{% static 'js/meuJs/categorias/categorias.js' %}"></script>
+    <script src="{% static 'js/meuJs/categorias/filtrar.js' %}"></script>
+
 {% endblock %} 

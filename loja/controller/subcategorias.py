@@ -1,9 +1,7 @@
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from loja.models.menus import Menus
 from produtos.models.subcategoria import Subcategoria
 from django.db.models import Count
-
 
 def subcategorias_por_menu(menu_id):
     # Busca o menu especificado pelo ID
@@ -17,3 +15,4 @@ def subcategorias_por_menu(menu_id):
                            'descricao':subcategoria.descricao,    
                            'total_registros': subcategoria.total_registros,} for subcategoria in subcategorias]
     return subcategorias_list
+

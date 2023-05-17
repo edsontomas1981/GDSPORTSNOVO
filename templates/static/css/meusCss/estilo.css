@@ -1,0 +1,8 @@
+.btn-dark{
+    background-color: black;
+    color: white;
+}
+
+.btn-dark:hover{
+    color: lightgray;
+}   

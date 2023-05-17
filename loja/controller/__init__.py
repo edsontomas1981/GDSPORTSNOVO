@@ -1,1 +1,2 @@
 from loja.controller.subcategorias import subcategorias_por_menu
+from loja.controller.buscar_quantidade_produtos_por_marca import buscar_quantidade_produtos_por_marca
