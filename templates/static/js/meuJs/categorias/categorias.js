@@ -17,7 +17,10 @@ window.addEventListener('load', async () => {
     let dados = { 'idMenu': idMenu };
     let conexao = new Conexao(url, dados);
     let result = await conexao.sendPostRequest();
-    console.log(result);
+    let novoResult = [result]
+    let filtroSubcategorias = result.subcategorias ? result.subcategorias.filter(subcategoria => subcategoria.categoria === 10) : [];
+
+    console.log(filtroSubcategorias);
 
     let totalPages = Math.ceil(result.status.length / itemsPerPage); // Calcula o número total de páginas
     renderizaPagina(currentPage, result.status); // Renderiza a página atual
