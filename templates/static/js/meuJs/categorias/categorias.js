@@ -14,13 +14,13 @@ window.addEventListener('load', async () => {
     let url = '/home/categoria/';
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
-    let dados = { 'idMenu': idMenu };
+    let carrinho = localStorage.getItem('carrinho')
+    let dados = { 'idMenu': idMenu,carrinho};
     let conexao = new Conexao(url, dados);
     let result = await conexao.sendPostRequest();
-    let novoResult = [result]
-    let filtroSubcategorias = result.subcategorias ? result.subcategorias.filter(subcategoria => subcategoria.categoria === 10) : [];
+    let teste = buscarPorSubcategoria(result,[10,11])
+    console.log(teste)
 
-    console.log(filtroSubcategorias);
 
     let totalPages = Math.ceil(result.status.length / itemsPerPage); // Calcula o número total de páginas
     renderizaPagina(currentPage, result.status); // Renderiza a página atual

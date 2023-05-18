@@ -1,33 +1,13 @@
-// let btnFiltrar = document.getElementById('btnFiltrar')
-// function verificarCheckboxes(div) {
-//     // Obtém a referência para a div que contém os checkboxes
-//     let divCheckboxes = document.getElementById(div);
-  
-//     // Obtém todos os elementos filhos da div
-//     let elementos = divCheckboxes.getElementsByTagName('input');
-  
-//     // Array para armazenar os checkboxes marcados
-//     let checkboxesMarcados = [];
-
-    
-//     // Percorre os elementos e verifica quais são checkboxes marcados
-//     for (let i = 0; i < elementos.length; i++) {
-//       let elemento = elementos[i];
-//       if (elemento.type === 'checkbox' && elemento.checked) {
-//         checkboxesMarcados.push(elemento);
-//       }
-//     }
-    
-//     let listaCheckbox = []
-//     // Exibe os checkboxes marcados no console
-//     console.log('Checkboxes marcados:');
-//     checkboxesMarcados.forEach(function(checkbox) {
-//         lista.push(checkbox.id);
-//     });
-//   }
-
-//   btnFiltrar.addEventListener('click',()=>{
-//     let subcategorias = verificarCheckboxes('filtroCategorias');
-//     verificarCheckboxes('filtroMarcas');
-//   })
-  
+function buscarPorSubcategoria(objetos, subcategorias) {
+    const resultados = [];
+    for (let i = 0; i < objetos.length; i++) {
+        const obj = objetos[i];
+        if (obj.subcategorias) {
+            const matchingSubcategorias = obj.subcategorias.filter(subcat => subcategorias.id.includes(subcat.id));
+            if (matchingSubcategorias.length > 0) {
+                resultados.push(obj);
+            }
+        }
+    }
+    return resultados;
+}
