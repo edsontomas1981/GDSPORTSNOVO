@@ -156,10 +156,10 @@ const carregaFiltroMarcas=(marcas,result)=>{
 const geraHtml = (dados)=>{
         // Gerando o HTML a partir do resultado da requisição
         return `
-        <div class="col-md-4 col-xs-6 produtos" id="${dados.id}" onclick="carregaProduto(this)">
+        <div class="col-md-4 col-xs-6 produtos">
             <div class="product">
                 <div class="product-img">
-                    <img src="${dados.capa}" alt="">
+                    <img src="${dados.capa}" alt="" id="${dados.id}" onclick="carregaProduto(this)">
                     <div class="product-label">
                     </div>
                 </div>
@@ -180,7 +180,7 @@ const geraHtml = (dados)=>{
                     </div>
                 </div>
                 <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+                    <button class="add-to-cart-btn btnAdicionaCarrinho" id="btnProd${dados.id}" onclick="adicionarAoCarrinho(this)" data-capa="${dados.capa}"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
                 </div>
             </div>
         </div>
