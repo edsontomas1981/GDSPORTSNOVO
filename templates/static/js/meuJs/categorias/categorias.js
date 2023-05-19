@@ -10,7 +10,7 @@ const itemsPerPage =6; // Define quantos itens você deseja exibir por página
 window.addEventListener('load', async () => {
     const loadingOverlay = document.getElementById("loading-overlay");
     loadingOverlay.style.display = "none";
-
+    updateWidgetCarrinho();
     let url = '/home/categoria/';
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
@@ -18,9 +18,6 @@ window.addEventListener('load', async () => {
     let dados = { 'idMenu': idMenu,carrinho};
     let conexao = new Conexao(url, dados);
     let result = await conexao.sendPostRequest();
-    let teste = buscarPorSubcategoria(result,[10,11])
-    console.log(teste)
-
 
     let totalPages = Math.ceil(result.status.length / itemsPerPage); // Calcula o número total de páginas
     renderizaPagina(currentPage, result.status); // Renderiza a página atual
@@ -180,7 +177,9 @@ const geraHtml = (dados)=>{
                     </div>
                 </div>
                 <div class="add-to-cart">
-                    <button class="add-to-cart-btn btnAdicionaCarrinho" id="btnProd${dados.id}" onclick="adicionarAoCarrinho(this)" data-capa="${dados.capa}"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+                    <button class="add-to-cart-btn btnAdicionaCarrinho" id="btnProd${dados.id}" 
+                    onclick="adicionarAoCarrinho(this)" data-capa="${dados.capa}" data-id="${dados.id}" 
+                    data-id="${dados.descricao}"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
                 </div>
             </div>
         </div>

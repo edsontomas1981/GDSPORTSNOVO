@@ -1,8 +1,6 @@
 let menu  =document.getElementById('menu')
 window.addEventListener('load',()=>{
-
     carregaMenu();
-
 })
 
 const carregaMenu = async ()=>{
@@ -11,7 +9,6 @@ const carregaMenu = async ()=>{
     let conexao = new Conexao(url,dados)
     let html=`<li class="active"><a href="/home/" class="teste" id="0">Home</a></li>`
     let result= await conexao.sendPostRequest()
-    console.log(result) 
     result.status.forEach(element => {
         html+=geraMenu(element)
     });
