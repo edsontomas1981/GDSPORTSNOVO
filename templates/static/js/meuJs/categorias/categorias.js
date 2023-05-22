@@ -14,7 +14,6 @@ window.addEventListener('load', async () => {
     let url = '/home/categoria/';
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
-    let carrinho = localStorage.getItem('carrinho')
     let dados = { 'idMenu': idMenu,carrinho};
     let conexao = new Conexao(url, dados);
     let result = await conexao.sendPostRequest();
@@ -179,7 +178,7 @@ const geraHtml = (dados)=>{
                 <div class="add-to-cart">
                     <button class="add-to-cart-btn btnAdicionaCarrinho" id="btnProd${dados.id}" 
                     onclick="adicionarAoCarrinho(this)" data-capa="${dados.capa}" data-id="${dados.id}" 
-                    data-id="${dados.descricao}"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+                    data-descricao="${dados.descricao}"data-preco="${dados.preco}"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
                 </div>
             </div>
         </div>
