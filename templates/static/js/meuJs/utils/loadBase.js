@@ -1,5 +1,6 @@
 let menu  =document.getElementById('menu')
 window.addEventListener('load',()=>{
+    updateWidgetCarrinho();
     carregaMenu();
 })
 

@@ -29,18 +29,19 @@ const updateWidgetCarrinho = () => {
     widgetCarrinho.innerHTML = `<i class="fa fa-shopping-cart"></i>
       							 <span>Carrinho</span>`;
   }
+  valorCarrinho(totalCarrinho, qtdeCarrinho);
 };
 
 const listaItemsWidget = (produto) => {
   return `<div class="product-widget">
     <div class="product-img">
-      <img src="${produto.img}" alt="">
+      <img src="${produto.img}" alt="${produto.desc}">
     </div>
     <div class="product-body">
       <h3 class="product-name"><a href="#">${produto.desc}</a></h3>
-      <h4 class="product-price"><span class="qty">${produto.quantidade}x</span>R$${produto.preco.toFixed(2)}</h4>
+      <h4 class="product-price"><span class="qty">${parseInt(produto.quantidade)}x</span>R$${parseFloat(produto.preco).toFixed(2)}</h4>
     </div>
-    <button class="delete" data-produto="${JSON.stringify(produto)}" onclick="removeItemCarrinho(this)"><i class="fa fa-close"></i></button>
+    <button class="delete" onclick="removeItemCarrinho(${produto.id})"><i class="fa fa-close"></i></button>
   </div>`;
 };
 
@@ -49,18 +50,27 @@ const valorCarrinho = (total, qtde) => {
     <h5>SUBTOTAL: R$ ${total.toFixed(2)}</h5>`;
 };
 
-const removeItemCarrinho = (botao) => {
-  let produto = JSON.parse(botao.dataset.produto);
-  console.log(produto)
-  // Aqui você pode adicionar a lógica para remover o item do carrinho, como atualizar o localStorage ou enviar uma solicitação ao servidor.
+const removeItemCarrinho = (idProduto) => {
+  let itensCarrinho = JSON.parse(localStorage.getItem('carrinho')); // Obtém os itens do carrinho do localStorage
 
-  // Exemplo: Remover o item do localStorage
-//   let itensCarrinho = JSON.parse(localStorage.getItem('carrinho'));
-//   let indice = itensCarrinho.findIndex(item => item.desc === produto.desc);
-//   if (indice !== -1) {
-//     itensCarrinho.splice(indice, 1);
-//     localStorage.setItem('carrinho', JSON.stringify(itensCarrinho));
-//   }
+  // Verifica se itensCarrinho é uma matriz válida
+  if (!Array.isArray(itensCarrinho)) {
+    return;
+  }
 
-//   updateWidgetCarrinho(); // Atualizar o widget do carrinho após remover o item
+  // Encontra o índice do item com o ID correspondente no carrinho
+  const indice = itensCarrinho.findIndex(item => item.id === idProduto);
+
+  // Verifica se o item foi encontrado
+  if (indice !== -1) {
+    itensCarrinho.splice(indice, 1); // Remove o item do carrinho usando o índice
+
+    // Atualiza o localStorage com os itens do carrinho atualizados
+    localStorage.setItem('carrinho', JSON.stringify(itensCarrinho));
+
+    // Atualiza o widget do carrinho
+    updateWidgetCarrinho();
+  }
 };
+
+

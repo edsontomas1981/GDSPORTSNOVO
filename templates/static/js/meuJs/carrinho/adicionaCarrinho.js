@@ -2,7 +2,6 @@
 // const btnAdicionaCarrinho = document.querySelector('.btnAdicionaCarrinho')
 
 function adicionarAoCarrinho(element) {
-  let qtdeCarrinho = document.getElementById('qtdeCarrinho');
   let carrinho = localStorage.getItem('carrinho');
   let img = element.dataset.capa;
   let descricao = element.dataset.descricao;
@@ -14,8 +13,6 @@ function adicionarAoCarrinho(element) {
   } else {
     carrinho = JSON.parse(carrinho);
   }
-
-  console.log(carrinho)
 
   // Verificar se o produto já existe no carrinho
   let produtoExistente = carrinho.find((produto) => produto.id === parseInt(id));
@@ -37,8 +34,6 @@ function adicionarAoCarrinho(element) {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
   updateWidgetCarrinho();
 }
-
-
   
 // Limpar o carrinho
 function limparCarrinho() {

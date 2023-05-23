@@ -12,9 +12,11 @@ def entrar(request):
     
         if user is not None:
             login(request, user)
-            return JsonResponse({'success': 'True'})
+            user_data = {'id':user.id,
+                         'username':user.username}
+            return JsonResponse({'status': 200 ,'usuario':user_data})
         else:
-            return JsonResponse({'success': False, 'error': 'Usuário ou senha incorretos.'})
+            return JsonResponse({'status': 404, 'error': 'Usuário ou senha incorretos.'})
     
     else:
-        return JsonResponse({'status': False, 'error': 'Metodo inválido.'})
+        return JsonResponse({'status': 405, 'error': 'Metodo inválido.'})

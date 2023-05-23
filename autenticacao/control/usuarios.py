@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 class Usuarios (User):
     def create_user(self,dados):
         try:
-            self.user = User.objects.create_user(dados['user'], dados['email'], dados['password'])
+            self.user = User.objects.create_user(dados['login'],dados['login'],dados['cadastroSenha'])
             return 200
         except:
             return 300

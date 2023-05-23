@@ -5,6 +5,7 @@ let confirmacaoSenha = document.getElementById('confirmacaoSenha')
 let btnCadastrar = document.getElementById('cadastrar')
 let formulario = document.getElementById('formCadastro')
 
+
 btnCadastrar.addEventListener('click',(e)=>{
     if (validaForm(formulario)){
         if (validarEmail(email.value)){
@@ -13,7 +14,7 @@ btnCadastrar.addEventListener('click',(e)=>{
             let dados = {'login':email.value,'firstName':firstName.value,
                         'cadastroSenha':cadastroSenha.value,'confirmacaoSenha':confirmacaoSenha.value,};
             
-                        let conexao = new Conexao(url,dados);
+            let conexao = new Conexao(url,dados);
             conexao.sendPostRequest();
         }else{
             alert("Email inválido")
