@@ -171,7 +171,7 @@ const geraHtml = (dados)=>{
                         <i class="fa fa-star"></i>
                     </div>
                     <div class="product-btns">
-                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Curtir</span></button>
+                        <button class="add-to-wishlist" onclick="addListaDesejos(this)" data-id="${dados.id}"><i class="fa fa-heart-o"></i><span class="tooltipp">Curtir</span></button>
                         <button class="quick-view"><a href="/home/produto/?idProduto=${dados.id}"><i class="fa fa-eye"></i></a><span class="tooltipp">Ver mais.</span></button>
                     </div>
                 </div>

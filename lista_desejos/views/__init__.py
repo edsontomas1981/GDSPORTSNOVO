@@ -1,0 +1,1 @@
+from lista_desejos.views.lista_desejos import lista_desejos

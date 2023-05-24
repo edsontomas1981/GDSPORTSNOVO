@@ -27,8 +27,6 @@ urlpatterns = [
     path('autenticacao/' , include('autenticacao.urls')),
     path('carrinho/' , include('carrinho.urls')),
     path('lista_desejos/' , include('lista_desejos.urls')),
-    path('lista_desejos/' , include('lista_desejos.urls')),
-
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
