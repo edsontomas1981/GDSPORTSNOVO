@@ -10,32 +10,43 @@ const itemsPerPage =6; // Define quantos itens você deseja exibir por página
 window.addEventListener('load', async () => {
     const loadingOverlay = document.getElementById("loading-overlay");
     loadingOverlay.style.display = "none";
-    updateWidgetCarrinho();
     let url = '/home/categoria/';
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
     let dados = { 'idMenu': idMenu,carrinho};
     let conexao = new Conexao(url, dados);
     let result = await conexao.sendPostRequest();
-
     let totalPages = Math.ceil(result.status.length / itemsPerPage); // Calcula o número total de páginas
     renderizaPagina(currentPage, result.status); // Renderiza a página atual
+    updateWidgetCarrinho();
+    widgetCurtidas(5)    
 
     carregaFiltroSubcategorias(result.subcategorias,result);
     carregaFiltroMarcas(result.marcas,result);
 
-        // Função para renderizar uma página específica
-        function renderizaPagina(page, data) {
-            let startIndex = (page - 1) * itemsPerPage;
-            let endIndex = startIndex + itemsPerPage;
-            let pageData = data.slice(startIndex, endIndex);
-            let html = "";
-            pageData.forEach(element => {
-                html += geraHtml(element);
-            });
-            container.innerHTML = html;
+    // Função para renderizar os controles de paginação com números de página
+    function renderizaControlesPaginacao() {
+        let paginationControls = document.getElementById("paginationControls");
+        let html = `
+            <a id="previousPageBtn" onclick="goToPreviousPage()" style="padding:20px;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        `;
+
+        // Adiciona os números das páginas
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === currentPage) {
+                    html += `<a class="pageNumber" onclick="goToPage(${ i })" style="padding:10px; cursor:pointer;">${ i }</a>`;
+                } else {
+                    html += `<a class="pageNumber" onclick="goToPage(${ i })" style="padding:20px;cursor:pointer;">${ i }</a>`;                }
+            }
+
+            html += `
+                <a id="nextPageBtn" onclick="goToNextPage()" style="padding:20px;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            `;
+            paginationControls.innerHTML = html;
+            updatePaginationControls();
         }
-    
+
+
         // Função para atualizar a página
         function updatePage() {
             renderizaPagina(currentPage, result.status);
@@ -72,33 +83,8 @@ window.addEventListener('load', async () => {
                 updatePage();
                 updatePaginationControls();
             }
-        }    
-    
-        renderizaControlesPaginacao();
-    
-        // Função para renderizar os controles de paginação com números de página
-        function renderizaControlesPaginacao() {
-            let paginationControls = document.getElementById("paginationControls");
-            let html = `
-                <a id="previousPageBtn" onclick="goToPreviousPage()" style="padding:20px;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-            `;
-    
-            // Adiciona os números das páginas
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === currentPage) {
-                    html += `<a class="pageNumber" onclick="goToPage(${ i })" style="padding:10px; cursor:pointer;">${ i }</a>`;
-                } else {
-                    html += `<a class="pageNumber" onclick="goToPage(${ i })" style="padding:20px;cursor:pointer;">${ i }</a>`;                }
-            }
-    
-            html += `
-                <a id="nextPageBtn" onclick="goToNextPage()" style="padding:20px;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            `;
-            paginationControls.innerHTML = html;
-            updatePaginationControls();
         }
-    
-        // Função para ir para uma página específica
+
         window.goToPage = function (page) {
             if (page >= 1 && page <= totalPages) {
                 currentPage = page;
@@ -109,11 +95,27 @@ window.addEventListener('load', async () => {
                 updatePage();
                 updatePaginationControls();
             }
-        }
-
-
-        
+        }            
+    
+        renderizaControlesPaginacao();
+    
+        // Função para ir para uma página específica
+    
 });
+
+// Função para renderizar uma página específica
+function renderizaPagina(page, data) {
+
+    let startIndex = (page - 1) * itemsPerPage;
+    let endIndex = startIndex + itemsPerPage;
+    let pageData = data.slice(startIndex, endIndex);
+    let html = "";
+    pageData.forEach(element => {
+        html += geraHtml(element);
+    });
+    container.innerHTML = html;
+}
+
 
 const carregaFiltroSubcategorias=(subcategorias,result)=>{
     html=''

@@ -1,1 +1,2 @@
 from lista_desejos.views.lista_desejos import lista_desejos
+from lista_desejos.views.read_lista import read_lista_desejos
