@@ -45,7 +45,6 @@ const carregaDadosProduto=(result)=>{
                         onclick="alteraImagem(this)" 
                         style="height: 100%;padding: 1px;"></li>`
 
-    console.log(result)
     if (result.produto.qtde>0){
         estoque.textContent='Em estoque'
     }else{

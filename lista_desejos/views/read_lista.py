@@ -5,7 +5,7 @@ from produtos.control.produtos import Produtos
 from lista_desejos.controller.lista_desejos import Lista_desejos 
 import json
 
-@login_required(login_url='/auth/entrar/')
+@login_required(login_url='/home/')
 def read_lista_desejos(request):
     if request.method == 'GET':
         return JsonResponse({'status': 200, 'produtos': listaProdutos})

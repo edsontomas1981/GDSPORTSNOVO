@@ -19,7 +19,7 @@ window.addEventListener('load', async () => {
     let totalPages = Math.ceil(result.status.length / itemsPerPage); // Calcula o número total de páginas
     renderizaPagina(currentPage, result.status); // Renderiza a página atual
     updateWidgetCarrinho();
-    widgetCurtidas(5)    
+    widgetCurtidas(0)    
 
     carregaFiltroSubcategorias(result.subcategorias,result);
     carregaFiltroMarcas(result.marcas,result);
