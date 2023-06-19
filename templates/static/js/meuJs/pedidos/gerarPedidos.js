@@ -8,4 +8,4 @@ btnComprar.addEventListener('click',async (e)=>{
     let conexao = new Conexao(url,dados)
     let response = await conexao.sendPostRequest();
     e.preventDefault()
-})
+}) 
