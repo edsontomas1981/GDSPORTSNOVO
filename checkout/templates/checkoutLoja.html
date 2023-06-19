@@ -4,111 +4,86 @@
 
 {% block 'conteudo'%}
 <div class="section">
+
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
-                <!-- Billing Details -->
-                <div class="billing-details">
-                    <div class="section-title">
-                        <h3 class="title">Endereço</h3>
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="Nome">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Sobrenome">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="endereco" placeholder="Endereço">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="cidade" placeholder="Cidade">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="uf" placeholder="UF">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="cep" placeholder="CEP">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Telefone">
-                    </div>
-                    <div class="form-group">
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="create-account">
-                            <label for="create-account">
-                                <span></span>
-                                Create Account?
-                            </label>
-                            <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                <input class="input" type="password" name="password" placeholder="Enter Your Password">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Billing Details -->
-
-                <!-- Shiping Details -->
-                <div class="shiping-details">
-                    <div class="section-title">
-                        <h3 class="title">Shiping address</h3>
-                    </div>
-                    <div class="input-checkbox">
-                        <input type="checkbox" id="shiping-address">
-                        <label for="shiping-address">
-                            <span></span>
-                            Ship to a diffrent address?
-                        </label>
-                        <div class="caption">
-                            <div class="form-group">
-                                <input class="input" type="text" name="nome" placeholder="Nome">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="sobrenome" placeholder="Sobrenome">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="endereco" placeholder="Endereço">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="cidade" placeholder="Cidade">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="uf" placeholder="UF">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="cep" placeholder="CEP">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telefone">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Shiping Details -->
-
-                <!-- Order notes -->
-                <div class="order-notes">
-                    <textarea class="input" placeholder="Order Notes"></textarea>
-                </div>
-                <!-- /Order notes -->
+            <div class="col-md-12">
+                
+                <ol class="breadcrumb">
+                    <li><h3 class="title">Checkout</h3></li>
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <a href="#">Esportes</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <a href="#">Futebol</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                        <a href="#">Futebol</a>
+                    </li>
+                </ol>
             </div>
+            <!-- <div class="col-md-6"> -->
 
+                
+                <!-- <div class="section-title text-center">
+                    <h3 class="title">Endereço de entrega</h3>
+                </div>
+                <div class="order-summary"> -->
+                    <!-- <form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="cep">Cep</label>
+                                <input type="text" class="input-group form-control pr-1" placeholder="Ex. 12345-678" id="cep">
+                            </div>
+                            <div class="col-md-8">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" class="input-group form-control" placeholder="Endereço" id="endereco">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" class="input-group form-control" placeholder="Complemento" id="complemento">
+                            </div>                            
+                            <div class="col-md-6">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" class="input-group form-control" placeholder="Bairro" id="bairro">
+                            </div>    
+                            <div class="col-md-6">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" class="input-group form-control" placeholder="Cidade" id="cidade">
+                            </div>                            
+                            <div class="col-md-6">
+                                <label for="uf">UF</label>
+                                <input type="text" class="input-group form-control" placeholder="UF" id="uf">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contato">Contato</label>
+                                <input type="text" class="input-group form-control" placeholder="Email" id="contato">
+                            </div>                            
+                            <div class="col-md-6">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" class="input-group form-control" placeholder="Email" id="telefone">
+                            </div>
+                        </div>
+                    </form> -->
+                <!-- </div> -->
+            <!-- </div> -->
             <!-- Order Details -->
-            <div class="col-md-5 order-details">
+            <div class="col-md-10">
                 <div class="section-title text-center">
-                    <h3 class="title">Carrinho</h3>
+                    <h3 class="title titulo" >Carrinho</h3>
                 </div>
                 <div class="order-summary">
                     <div class="order-col">
+                        <div><strong>Quantidade</strong></div>
                         <div><strong>Produto</strong></div>
                         <div><strong>Preço</strong></div>
+                    </div>
+                    <div id="tabela">
+
+
                     </div>
                     <div class="order-products" id="itemListaCarrinho">
 

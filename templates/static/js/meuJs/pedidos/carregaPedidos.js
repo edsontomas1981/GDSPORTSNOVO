@@ -20,14 +20,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 const geraPedido=(produto)=>{
 
     return `<div class="order-col">
-                <div>${produto.quantidade}x ${produto.desc}</div>
+                <div class="product-img">
+                    <img src="${produto.img}" alt="${produto.desc}" width="10%">
+                </div>
+                <div>
+                    <div class="input-number">
+                        <input type="number" value="${produto.quantidade}">
+                        <span class="qty-up">+</span>
+                        <span class="qty-down">-</span>
+                    </div>
+                </div>
+            <div class="text-center">${produto.desc}</div>
                 <div>R$ ${parseFloat(produto.preco)*parseFloat(produto.quantidade)}</div>
             </div>` 
 
 }
 
 const geraFrete = (vlrFrete)=>{
-    return`<strong>${parseFloat(vlrFrete)}</strong>`
+    return`<hr><strong>${parseFloat(vlrFrete)}</strong><hr>`
 }
 
 const geraTotalPedido =(carrinho,frete)=>{
@@ -36,7 +46,7 @@ const geraTotalPedido =(carrinho,frete)=>{
         totalGeral += parseFloat(produto.preco)*parseFloat(produto.quantidade)
     });
     totalGeral += frete
-    return`<strong class="order-total">R$ ${totalGeral}</strong>`
+    return`<strong class="order-total">R$ ${totalGeral}</strong><hr>`
 
 }
 

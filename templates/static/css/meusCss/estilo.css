@@ -8,5 +8,18 @@
 }   
 
 .curtida{
-    color: red;
+    color: #D10024;
 }
+
+.order-summary{
+    border: none;
+}
+
+.titulo{
+    background-color: #D10024;
+}
+
+.input-number {
+    width: 70px; /* Defina a largura desejada */
+    height: 40px; /* Defina a altura desejada */
+  }
