@@ -1,144 +1,36 @@
-{% extends 'baseLoja.html'%}
+{% extends 'blankLoja.html'%}
 
 {% load static %}
+
+{% block 'breadcrumb' %}
+    <h3 class="breadcrumb-header">Meu Cart</h3>
+    <ul class="breadcrumb-tree">
+        <li><a href="#">Carrinho</a></li>
+        <li><a href="#">Identificação</a></li>
+        <li><a href="#">Endereço</a></li>
+        <li><a href="#">Pagamento</a></li>
+        <li class="active">Confirmação</li>							
+    </ul>
+{% endblock %}
 
 {% block 'conteudo'%}
 <div class="section">
 
     <div class="container">
         <div class="row">
+            <table class="table table-borderless" id="tabelaCarrinho">
+                
+            </table>
             <div class="col-md-12">
-                
-                <ol class="breadcrumb">
-                    <li><h3 class="title">Checkout</h3></li>
-                    <li class="breadcrumb-item">
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                        <a href="#">Esportes</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                        <a href="#">Futebol</a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                        <a href="#">Futebol</a>
-                    </li>
-                </ol>
             </div>
-            <!-- <div class="col-md-6"> -->
 
-                
-                <!-- <div class="section-title text-center">
-                    <h3 class="title">Endereço de entrega</h3>
-                </div>
-                <div class="order-summary"> -->
-                    <!-- <form>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="cep">Cep</label>
-                                <input type="text" class="input-group form-control pr-1" placeholder="Ex. 12345-678" id="cep">
-                            </div>
-                            <div class="col-md-8">
-                                <label for="endereco">Endereço</label>
-                                <input type="text" class="input-group form-control" placeholder="Endereço" id="endereco">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="complemento">Complemento</label>
-                                <input type="text" class="input-group form-control" placeholder="Complemento" id="complemento">
-                            </div>                            
-                            <div class="col-md-6">
-                                <label for="bairro">Bairro</label>
-                                <input type="text" class="input-group form-control" placeholder="Bairro" id="bairro">
-                            </div>    
-                            <div class="col-md-6">
-                                <label for="cidade">Cidade</label>
-                                <input type="text" class="input-group form-control" placeholder="Cidade" id="cidade">
-                            </div>                            
-                            <div class="col-md-6">
-                                <label for="uf">UF</label>
-                                <input type="text" class="input-group form-control" placeholder="UF" id="uf">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="contato">Contato</label>
-                                <input type="text" class="input-group form-control" placeholder="Email" id="contato">
-                            </div>                            
-                            <div class="col-md-6">
-                                <label for="telefone">Telefone</label>
-                                <input type="text" class="input-group form-control" placeholder="Email" id="telefone">
-                            </div>
-                        </div>
-                    </form> -->
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- Order Details -->
-            <div class="col-md-10">
-                <div class="section-title text-center">
-                    <h3 class="title titulo" >Carrinho</h3>
-                </div>
-                <div class="order-summary">
-                    <div class="order-col">
-                        <div><strong>Quantidade</strong></div>
-                        <div><strong>Produto</strong></div>
-                        <div><strong>Preço</strong></div>
-                    </div>
-                    <div id="tabela">
-
-
-                    </div>
-                    <div class="order-products" id="itemListaCarrinho">
-
-                    </div>
-                    <div class="order-col">
-                        <div>Frete</div>
-                        <div id="vlrFrete"></div>
-                    </div>
-                    <div class="order-col">
-                        <div><strong>TOTAL</strong></div>
-                        <div  id="totalPedido"></div>
-                    </div>
-                </div>
-                <div class="payment-method">
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-1">
-                        <label for="payment-1">
-                            <span></span>
-                            Direct Bank Transfer
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-2">
-                        <label for="payment-2">
-                            <span></span>
-                            Cheque Payment
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-3">
-                        <label for="payment-3">
-                            <span></span>
-                            Paypal System
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-checkbox">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">
-                        <span></span>
-                        I've read and accept the <a href="#">terms &amp; conditions</a>
-                    </label>
-                </div>
-                <a href="#" class="primary-btn order-submit" id="comprar">Finalizar compra</a>
+            <div class="col-md-9">
             </div>
-            <!-- /Order Details -->
+
+            <div class="col-md-3">
+                <button class="btn primary-btn newsletter-btn btnFinalizaCompra">Finalizar Compra</button>
+            </div>
+
         </div>
     </div>
 </div>

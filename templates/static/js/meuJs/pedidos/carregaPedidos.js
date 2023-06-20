@@ -2,38 +2,81 @@ let htmlItemCarrinho = ''
 let descricaoProdcarrinho = document.getElementById('itemListaCarrinho')
 let totalPedido = document.getElementById('totalPedido')
 let frete = document.getElementById('vlrFrete')
+let tabelaCarrinho = document.getElementById('tabelaCarrinho')
+
+let htmlTabela = `
+            <div class="cart-list">
+                <thead>
+                    <tr>
+                        <th></th>    
+                        <th></th>    
+                        <th>Produto</th>
+                        <th>Quantidade</th>    
+                        <th>Valor unitario R$</th>
+                        <th>Valor Total</th>
+                    </tr>
+                  </thead>`
 
 document.addEventListener('DOMContentLoaded',()=>{
     let carrinho = localStorage.getItem('carrinho');
     carrinho = JSON.parse(carrinho)
     carrinho.forEach(element => {
         console.log(element)
-        htmlItemCarrinho += geraPedido(element)
+        htmlTabela+=geraPedido(element)
     });
-    descricaoProdcarrinho.innerHTML = htmlItemCarrinho
-    let htmlFrete=geraFrete(0.00)
-    frete.innerHTML = htmlFrete
-    let htmlValor = geraTotalPedido(carrinho,0.00)
-    totalPedido.innerHTML = htmlValor
+    // descricaoProdcarrinho.innerHTML = htmlItemCarrinho
+    // let htmlFrete=geraFrete(0.00)
+    // frete.innerHTML = htmlFrete
+    // let htmlValor = geraTotalPedido(carrinho,0.00)
+    // totalPedido.innerHTML = htmlValor
+
+    htmlTabela+=`<tr>
+                    <td colspan="3" align="right">
+                        <h4>Total</h4>
+                    </td>
+                    <td colspan="3">
+                        <h4> R$ ${geraTotalPedido(carrinho,0.00)}</h4>
+                    </td>
+                 </tr>`
+
+    tabelaCarrinho.innerHTML = htmlTabela
 })
 
 const geraPedido=(produto)=>{
+    return     `<tr>
+                    <td colspan="2">
+                        <div class="product-widget">
+                            <div class="product-img">
+                                <img src="${produto.img}" alt="${produto.desc}" style="width: 50%;">
+                                <button class="delete" onclick="removeItemCarrinho(9)">
+                                <i class="fa fa-close"></i>
+                            </button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-body">
+                            <h5 class="product-name"><a href="#">${produto.desc}</a></h5>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-body">
+                            <h5 class="product-price"><span class="qty">${produto.quantidade}</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-body">
+                            <h5 class="product-price"><span class="qty">${(produto.preco).toFixed(2)}</h5>
+                        </div>
+                    </td>                                           
+                    <td>
+                        <div class="product-body">
+                            <h5 class="product-price"><span class="qty">${(produto.preco*produto.quantidade).toFixed(2)}</h5>
+                        </div>
+                    </td>                     
 
-    return `<div class="order-col">
-                <div class="product-img">
-                    <img src="${produto.img}" alt="${produto.desc}" width="10%">
-                </div>
-                <div>
-                    <div class="input-number">
-                        <input type="number" value="${produto.quantidade}">
-                        <span class="qty-up">+</span>
-                        <span class="qty-down">-</span>
-                    </div>
-                </div>
-            <div class="text-center">${produto.desc}</div>
-                <div>R$ ${parseFloat(produto.preco)*parseFloat(produto.quantidade)}</div>
-            </div>` 
-
+                </tr>
+            </div>`//fecha uma div iniciado na linha 8
 }
 
 const geraFrete = (vlrFrete)=>{
@@ -46,7 +89,7 @@ const geraTotalPedido =(carrinho,frete)=>{
         totalGeral += parseFloat(produto.preco)*parseFloat(produto.quantidade)
     });
     totalGeral += frete
-    return`<strong class="order-total">R$ ${totalGeral}</strong><hr>`
+    return parseFloat(totalGeral).toFixed(2)
 
 }
 
