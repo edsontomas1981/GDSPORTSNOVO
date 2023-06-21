@@ -8,8 +8,6 @@ let currentPage = 1;
 const itemsPerPage =6; // Define quantos itens você deseja exibir por página
 
 window.addEventListener('load', async () => {
-    const loadingOverlay = document.getElementById("loading-overlay");
-    loadingOverlay.style.display = "none";
     let url = '/home/categoria/';
     const urlParams = new URLSearchParams(window.location.search);
     const idMenu = urlParams.get('idMenu');
@@ -196,13 +194,15 @@ function toggleAside() {
     }
   }
 
-container.addEventListener("readystatechange", function() {
-    if (container.readyState === "complete") {
-        loading.style.display = "none";
-    } else {
-        loading.style.display = "block";
-    }
-});
+if (container) {
+    container.addEventListener("readystatechange", function() {
+        if (container.readyState === "complete") {
+            loading.style.display = "none";
+        } else {
+            loading.style.display = "block";
+        }
+    });
+}
 
 const carregaProduto=(e)=>{
     let url = `/home/produto/?idProduto=${e.id}`;

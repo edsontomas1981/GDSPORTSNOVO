@@ -17,9 +17,21 @@
 
 .titulo{
     background-color: #D10024;
+
 }
 
 .input-number {
     width: 70px; /* Defina a largura desejada */
     height: 40px; /* Defina a altura desejada */
 }
+
+.alinhaTabela{
+    margin-top: 25px;
+}
+
+@media (max-width: 767px) {
+    .hide-on-mobile {
+      display: none;
+    }
+  }
+  

@@ -5,11 +5,11 @@ let frete = document.getElementById('vlrFrete')
 let tabelaCarrinho = document.getElementById('tabelaCarrinho')
 
 let htmlTabela = `
-            <div class="cart-list">
+            <div class="cart-list hide-on-mobile">
                 <thead>
                     <tr>
-                        <th></th>    
-                        <th></th>    
+                        <th class="hide-on-mobile"></th>    
+                        <th class="hide-on-mobile"></th>    
                         <th>Produto</th>
                         <th>Quantidade</th>    
                         <th>Valor unitario R$</th>
@@ -20,15 +20,11 @@ let htmlTabela = `
 document.addEventListener('DOMContentLoaded',()=>{
     let carrinho = localStorage.getItem('carrinho');
     carrinho = JSON.parse(carrinho)
+    if (carrinho){
     carrinho.forEach(element => {
         console.log(element)
         htmlTabela+=geraPedido(element)
     });
-    // descricaoProdcarrinho.innerHTML = htmlItemCarrinho
-    // let htmlFrete=geraFrete(0.00)
-    // frete.innerHTML = htmlFrete
-    // let htmlValor = geraTotalPedido(carrinho,0.00)
-    // totalPedido.innerHTML = htmlValor
 
     htmlTabela+=`<tr>
                     <td colspan="3" align="right">
@@ -39,15 +35,15 @@ document.addEventListener('DOMContentLoaded',()=>{
                     </td>
                  </tr>`
 
-    tabelaCarrinho.innerHTML = htmlTabela
+    tabelaCarrinho.innerHTML = htmlTabela}
 })
 
 const geraPedido=(produto)=>{
     return     `<tr>
-                    <td colspan="2">
+                    <td colspan="2" class="hide-on-mobile">
                         <div class="product-widget">
-                            <div class="product-img">
-                                <img src="${produto.img}" alt="${produto.desc}" style="width: 50%;">
+                            <div class="product-img ">
+                                <img src="${produto.img}" alt="${produto.desc}" style="width: 100%;">
                                 <button class="delete" onclick="removeItemCarrinho(9)">
                                 <i class="fa fa-close"></i>
                             </button>
@@ -56,22 +52,27 @@ const geraPedido=(produto)=>{
                     </td>
                     <td>
                         <div class="product-body">
-                            <h5 class="product-name"><a href="#">${produto.desc}</a></h5>
+                            <h5 class="product-name alinhaTabela"><a href="#">${produto.desc}</a></h5>
                         </div>
                     </td>
                     <td>
                         <div class="product-body">
-                            <h5 class="product-price"><span class="qty">${produto.quantidade}</h5>
-                        </div>
+                        <div class="header-search">
+
+                        <div class="btn-toolbar" role="toolbar" aria-label="...">
+                            <div class="btn-group" role="group" aria-label="..."><button type="button" class="btn btn-default">-</button></div>
+                            <div class="btn-group" role="group" aria-label="..."><a href="#" class="btn btn-default">${produto.quantidade}</a></div>
+                            <div class="btn-group" role="group" aria-label="..."><button type="button" class="btn btn-default">+</button></div>
+                        </div>                        
                     </td>
                     <td>
                         <div class="product-body">
-                            <h5 class="product-price"><span class="qty">${(produto.preco).toFixed(2)}</h5>
+                            <h5 class="product-price alinhaTabela" ><span class="qty">${(produto.preco).toFixed(2)}</h5>
                         </div>
                     </td>                                           
                     <td>
                         <div class="product-body">
-                            <h5 class="product-price"><span class="qty">${(produto.preco*produto.quantidade).toFixed(2)}</h5>
+                            <h5 class="product-price alinhaTabela"><span class="qty">${(produto.preco*produto.quantidade).toFixed(2)}</h5>
                         </div>
                     </td>                     
 
