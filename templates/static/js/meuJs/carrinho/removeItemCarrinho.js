@@ -1,3 +1,4 @@
+
 const removeItemCarrinho = (idProduto) => {
     let itensCarrinho = JSON.parse(localStorage.getItem('carrinho')); // Obtém os itens do carrinho do localStorage
   

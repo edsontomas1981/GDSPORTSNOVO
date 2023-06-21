@@ -14,17 +14,30 @@
 {% endblock %}
 
 {% block 'conteudo'%}
+<!-- Div de carregamento -->
+<div id="loader" class="loader">
+<img src="{% static 'img/loading.gif' %}">
+</div>      
 <div class="section">
 
     <div class="container">
         <div class="row">
+            <div class="col-md-9">
+            </div>
+
+            <div class="col-md-3 botaoFinalizarCompra">
+                <button class="btn primary-btn btnFinalizaCompra">Finalizar Compra</button>
+            </div>
+
             <table class="table table-borderless" id="tabelaCarrinho">
                 
             </table>
-            <div class="col-md-12">
-            </div>
 
-            <div class="col-md-9">
+            <div class="col-md-3">
+                <a href="/home/" class="btn danger-btn newsletter-btn btnFinalizaCompra">Continuar comprando</a>
+            </div>            
+
+            <div class="col-md-6">
             </div>
 
             <div class="col-md-3">
@@ -39,6 +52,7 @@
 {% block 'js' %} 
     <script src="{% static 'js/meuJs/pedidos/carregaPedidos.js' %}"></script>    
     <script src="{% static 'js/meuJs/pedidos/gerarPedidos.js' %}"></script>    
-    <script src="{% static 'js/meuJs/categorias/categorias.js' %}"></script>
-    <script src="{% static 'js/meuJs/categorias/filtrar.js' %}"></script>
+    <script src="{% static 'js/meuJs/carrinho/addItem.js' %}"></script>
+    <script src="{% static 'js/meuJs/carrinho/delItem.js' %}"></script>
+    <script src="{% static 'js/meuJs/carrinho/removeItemCarrinho.js' %}"></script>
 {% endblock %} 
