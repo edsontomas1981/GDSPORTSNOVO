@@ -3,7 +3,7 @@ let descricaoProdcarrinho = document.getElementById('itemListaCarrinho')
 let totalPedido = document.getElementById('totalPedido')
 let frete = document.getElementById('vlrFrete')
 let tabelaCarrinho = document.getElementById('tabelaCarrinho')
-
+let itens = document.getElementById('itens')
 let htmlTabela = `
             <div class="cart-list hide-on-mobile">
                 <thead>
@@ -17,6 +17,10 @@ let htmlTabela = `
                     </tr>
                   </thead>`
 
+const itensPedidos = (produto)=>{
+    
+    let htmlItens = ``
+}
 
 const carregaPaginaPedidos = ()=>{
     let carrinho = localStorage.getItem('carrinho');

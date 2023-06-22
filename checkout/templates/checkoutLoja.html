@@ -5,11 +5,11 @@
 {% block 'breadcrumb' %}
     <h3 class="breadcrumb-header">Meu Carrinho</h3>
     <ul class="breadcrumb-tree">
-        <li><a href="#">Carrinho</a></li>
-        <li><a href="#">Identificação</a></li>
+        <li class="active">Carrinho</li>
+        <li><a href="/autenticacao/identificacao/">Identificação</a></li>
         <li><a href="#">Endereço</a></li>
         <li><a href="#">Pagamento</a></li>
-        <li class="active">Confirmação</li>							
+        <li><a href="#">Confirmação</a></li>							
     </ul>
 {% endblock %}
 
@@ -23,10 +23,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
+                <div id="itens" style="text-align: right;">
+                    <p style="font-size: 20px;"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> 5 itens</p>
+                </div>
             </div>
 
             <div class="col-md-3 botaoFinalizarCompra">
-                <button class="btn primary-btn btnFinalizaCompra">Finalizar Compra</button>
+                <a href="/autenticacao/identificacao/" class="btn primary-btn btnFinalizaCompra">Finalizar Compra</a>
             </div>
 
             <table class="table table-borderless" id="tabelaCarrinho">
@@ -41,7 +44,7 @@
             </div>
 
             <div class="col-md-3">
-                <button class="btn primary-btn newsletter-btn btnFinalizaCompra">Finalizar Compra</button>
+                <a href="/autenticacao/identificacao/" class="btn primary-btn newsletter-btn btnFinalizaCompra">Finalizar Compra</a>
             </div>
 
         </div>

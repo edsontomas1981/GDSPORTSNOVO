@@ -10,4 +10,5 @@ urlpatterns = [
     path('login_fire/', views_autenticacao.login_fire,name='views_fire'),
     path('logout/', views_autenticacao.logout_view,name='views_logout'),
     path('cadastrar/', views_autenticacao.criar_usuario,name='cria_usuario'),
+    path('identificacao/', views_autenticacao.identificacao,name='identificacao'),
     ]

@@ -48,9 +48,32 @@
     padding-top: 50vh;
   }
 
+  .centro{
+    padding: 10px;
+  }
+
+  .black-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #000000;
+    border: none;
+    border-radius: 40px;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+  .black-btn:hover, .black-btn:focus {
+    color: #FFF;
+  }
+  
+
 @media (max-width: 767px) {
     .hide-on-mobile {
-      display: none;
+        display: none;
     }
-  }
+}
   
