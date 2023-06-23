@@ -3,7 +3,6 @@ let descricaoProdcarrinho = document.getElementById('itemListaCarrinho')
 let totalPedido = document.getElementById('totalPedido')
 let frete = document.getElementById('vlrFrete')
 let tabelaCarrinho = document.getElementById('tabelaCarrinho')
-let itens = document.getElementById('itens')
 let htmlTabela = `
             <div class="cart-list hide-on-mobile">
                 <thead>
@@ -17,9 +16,18 @@ let htmlTabela = `
                     </tr>
                   </thead>`
 
-const itensPedidos = (produto)=>{
-    
-    let htmlItens = ``
+const itensPedidos = ()=>{
+    let carrinho = localStorage.getItem('carrinho');
+    let itens = document.getElementById('itens')
+    let qtdeItens = 0
+    carrinho = JSON.parse(carrinho)
+    if (carrinho){
+    carrinho.forEach(element => {
+            qtdeItens += parseInt(element.quantidade)
+    });
+    }
+    let htmlItens = `<p style="font-size: 20px;"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> ${qtdeItens} itens</p>`
+    itens.innerHTML = htmlItens
 }
 
 const carregaPaginaPedidos = ()=>{
@@ -29,7 +37,6 @@ const carregaPaginaPedidos = ()=>{
     carrinho.forEach(element => {
             htmlTabela+=geraPedido(element)
     });
-
     htmlTabela+=`<tr>
                     <td colspan="5" align="right">
                         <h4>Total</h4>
@@ -42,9 +49,10 @@ const carregaPaginaPedidos = ()=>{
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    var loader = document.getElementById('loader');
+    let loader = document.getElementById('loader');
     loader.style.display = 'none';
     carregaPaginaPedidos();
+    itensPedidos()
 })
 
 const geraPedido=(produto)=>{
@@ -96,6 +104,7 @@ const geraFrete = (vlrFrete)=>{
     return`<hr><strong>${parseFloat(vlrFrete)}</strong><hr>`
 }
 
+
 const geraTotalPedido =(carrinho,frete)=>{
     let totalGeral=0.00
     carrinho.forEach(produto => {
@@ -107,7 +116,7 @@ const geraTotalPedido =(carrinho,frete)=>{
 }
 
 function exibirLoader() {
-    var loader = document.getElementById('loader');
+    let loader = document.getElementById('loader');
     loader.style.display = 'block';
   }
 
