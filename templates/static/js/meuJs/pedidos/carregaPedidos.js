@@ -9,6 +9,9 @@ let htmlTabela = `
                     <tr>
                         <th class="hide-on-mobile"></th>    
                         <th class="hide-on-mobile"></th>    
+                        <th class="hide-on-mobile"></th>
+                        <th class="hide-on-mobile"></th>    
+                          
                         <th>Produto</th>
                         <th>Quantidade</th>    
                         <th>Valor unitario R$</th>
@@ -27,7 +30,10 @@ const itensPedidos = ()=>{
     });
     }
     let htmlItens = `<p style="font-size: 20px;"><i class="fa fa-shopping-cart" aria-hidden="true" ></i> ${qtdeItens} itens</p>`
-    itens.innerHTML = htmlItens
+
+    if (itens !== null) {
+      itens.innerHTML = htmlItens;
+    }
 }
 
 const carregaPaginaPedidos = ()=>{
@@ -38,26 +44,28 @@ const carregaPaginaPedidos = ()=>{
             htmlTabela+=geraPedido(element)
     });
     htmlTabela+=`<tr>
-                    <td colspan="5" align="right">
-                        <h4>Total</h4>
+                    <td colspan="7" align="right">
+                        <h4>Total dos Produtos</h4>
                     </td>
                     <td colspan="2">
                         <h4> R$ ${geraTotalPedido(carrinho,0.00)}</h4>
                     </td>
                  </tr>`
-    tabelaCarrinho.innerHTML = htmlTabela}
+    if (tabelaCarrinho !== null) {
+      tabelaCarrinho.innerHTML = htmlTabela;
+    }
+
+}
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    let loader = document.getElementById('loader');
-    loader.style.display = 'none';
     carregaPaginaPedidos();
     itensPedidos()
 })
 
 const geraPedido=(produto)=>{
     return     `<tr>
-                    <td colspan="2" class="hide-on-mobile">
+                    <td colspan="4" class="hide-on-mobile">
                         <div class="product-widget">
                             <div class="product-img ">
                                 <img src="${produto.img}" alt="${produto.desc}" style="width: 100%;">
@@ -114,21 +122,3 @@ const geraTotalPedido =(carrinho,frete)=>{
     return parseFloat(totalGeral).toFixed(2)
 
 }
-
-function exibirLoader() {
-    let loader = document.getElementById('loader');
-    loader.style.display = 'block';
-  }
-
-function atualizarPagina() {
-    // Exibir div de carregamento
-    exibirLoader();
-  
-    // Aguardar um pequeno intervalo de tempo antes de recarregar a página (apenas para fins de exemplo)
-    setTimeout(function() {
-      // Recarregar a página
-      location.reload();
-    }, 2000); // Tempo de espera de 2 segundos (para fins de exemplo)
-  }
-  
-

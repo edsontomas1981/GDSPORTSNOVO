@@ -23,6 +23,3 @@ function verificarLogin() {
     }
     return cookieValue;
   }
-  
-  verificarLogin();
-  

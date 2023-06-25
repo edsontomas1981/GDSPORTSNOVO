@@ -7,7 +7,7 @@
     <ul class="breadcrumb-tree">
         <li class="active">Carrinho</li>
         <li><a href="/autenticacao/identificacao/">Identificação</a></li>
-        <li><a href="#">Endereço</a></li>
+        <!-- <li><a href="#">Endereço</a></li> -->
         <li><a href="#">Pagamento</a></li>
         <li><a href="#">Confirmação</a></li>							
     </ul>
@@ -19,36 +19,63 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <div id="itens" style="text-align: right;">
+            <div class="col-12">
+                <div class="col-md-9">
+                    <div id="itens" style="text-align: right;">
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-3 botaoFinalizarCompra">
+                    <a href="/autenticacao/identificacao/" class="btn primary-btn btnFinalizaCompra">Finalizar Compra</a>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="card">
+                            <div class="card-header primary-btn">
+                                Carrinho                        
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-borderless" id="tabelaCarrinho">
                     
+                                </table>                                
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-md-3 botaoFinalizarCompra">
-                <a href="/autenticacao/identificacao/" class="btn primary-btn btnFinalizaCompra">Finalizar Compra</a>
+            <div class="col-12" style="text-align: right; padding-top: 30px;padding-bottom: 30px;" >
+                <div class="col-md-12">
+                    <div>
+                        <div class="col-md-12">
+                            <h3>Total Geral : R$ 560,00 </h3>
+                        </div>            
+                    </div>
+                </div>
             </div>
 
-            <table class="table table-borderless" id="tabelaCarrinho">
-                
-            </table>
+            <div class="col-12">
+                <div class="col-md-9">
+                    <div style="text-align: left;">
+                        <div class="col-md-6">
+                            <a href="/home/" class="btn danger-btn newsletter-btn btnFinalizaCompra">Continuar comprando</a>
+                        </div>            
+                    </div>
+                </div>
 
-            <div class="col-md-3">
-                <a href="/home/" class="btn danger-btn newsletter-btn btnFinalizaCompra">Continuar comprando</a>
-            </div>            
-
-            <div class="col-md-6">
+                <div class="col-md-3 botaoFinalizarCompra">
+                    <a href="/autenticacao/identificacao/" class="btn primary-btn btnFinalizaCompra">Finalizar Compra</a>
+                </div>
             </div>
-
-            <div class="col-md-3">
-                <a href="/autenticacao/identificacao/" class="btn primary-btn newsletter-btn btnFinalizaCompra">Finalizar Compra</a>
-            </div>
-
         </div>
     </div>
 </div>
-
-{% endblock %} 
+{% endblock %}
 {% block 'js' %} 
     <script src="{% static 'js/meuJs/pedidos/carregaPedidos.js' %}"></script>    
     <script src="{% static 'js/meuJs/pedidos/gerarPedidos.js' %}"></script>    

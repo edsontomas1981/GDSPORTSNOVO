@@ -57,13 +57,34 @@
     padding: 12px 30px;
     background-color: #000000;
     border: none;
-    border-radius: 40px;
     color: #FFF;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
+  }
+
+
+  .accordion-title-red{
+    background-color: #D10024;
+    color: #FFF;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+
+  .accordion-title-red:hover{
+    background-color: #D10024;
+    color: #FFF;
+  }
+
+  .title-accordion{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #FFF;
   }
 
   .black-btn:hover, .black-btn:focus {

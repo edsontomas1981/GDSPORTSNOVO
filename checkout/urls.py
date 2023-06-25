@@ -5,4 +5,5 @@ from checkout import views as views_checkout
 
 urlpatterns = [
     path('',views_checkout.checkout,name='checkout'),
+    path('pagar/',views_checkout.pagar,name='pagar'),
     ]

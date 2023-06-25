@@ -7,71 +7,20 @@
     <ul class="breadcrumb-tree">
         <li><a href="/checkout/">Carrinho</a></li>
         <li class="active">Identificação</li>
-        <li><a href="#">Endereço</a></li>
+        <!-- <li><a href="#">Endereço</a></li> -->
         <li><a href="#">Pagamento</a></li>
         <li><a href="#">Confirmação</a></li>							
     </ul>
 {% endblock %}
 
 {% block 'conteudo'%}
-    <div class="row">
-        <div class="col-md-1 hide-on-mobile">
-            
-        </div>
-        <div class="col-md-5 col-12">
-            <div class="card">
-                <div class="card-header primary-btn">
-                  Já é nosso cliente ?
-                </div>
-                <div class="card-body">
-                    <form>
-                        <label for="login" >Email</label>
-                        <input type="text" class="form-control" id="loginAutentica">
-                        <label for="senha" >Senha</label>
-                        <input type="password" class="form-control" id="senhaAutentica">
-                        <a href="#" class="btn black-btn alinhaTabela" id="btnAutentica">Entrar</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 col-12">
-            <div class="card">
-                <div class="card-header primary-btn">
-                  Ainda não sou cliente.
-                </div>
-                <div class="card-body">
-                    <form>
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <label for="nome" >Nome</label>
-                            <input type="text" class="form-control" id="nome">
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <label for="email" >Email</label>
-                            <input type="text" class="form-control" id="email">
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <label for="nome" >Senha</label>
-                            <input type="password" class="form-control" id="nome">
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <label for="email" >Confirmação de senha</label>
-                            <input type="password" class="form-control" id="email">
-                        </div>                       
-                    </div>
-                    <a href="#" class="btn black-btn alinhaTabela">Criar cadastro</a>    
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1 hide-on-mobile">
-            
-        </div>
-          
-    </div>
+    {% include 'formLoginCadastroUser.html' %}
+    
 {% endblock %} 
 {% block 'js' %} 
-    <script src="{% static 'js/meuJs/pedidos/carregaPedidos.js' %}"></script>    
+    <script src="{% static 'js/meuJs/pedidos/carregaPedidos.js' %}"></script> 
+    <script src="{% static 'js/meuJs/autenticacao/autenticaPedido.js' %}"></script>    
+   
     <script src="{% static 'js/meuJs/pedidos/gerarPedidos.js' %}"></script>    
     <script src="{% static 'js/meuJs/carrinho/addItem.js' %}"></script>
     <script src="{% static 'js/meuJs/carrinho/delItem.js' %}"></script>

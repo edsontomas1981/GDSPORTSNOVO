@@ -9,5 +9,5 @@ botaoEntrar.addEventListener('click', async (e)=>{
     let conexao = new Conexao(url,dados)
     let result= await conexao.sendPostRequest()
     e.preventDefault();
-})
+});
 
